@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navi_graph"
+    app:startDestination="@id/HomePageFragment">
+
+    <fragment
+        android:id="@+id/HomePageFragment"
+        android:name="com.taipeiTravelGuide.view.fragment.HomePageFragment"
+        android:label="HomePageFragment">
+
+        <action
+            android:id="@+id/action_HomePageFragment_to_HotNewsFragment"
+            app:destination="@id/HotNewsFragment" />
+        <action
+            android:id="@+id/action_HomePageFragment_to_TravelSpotFragment"
+            app:destination="@id/TravelSpotFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/HotNewsFragment"
+        android:name="com.taipeiTravelGuide.view.fragment.HotNewsFragment"
+        android:label="HotNewsFragment" />
+    <fragment
+        android:id="@+id/TravelSpotFragment"
+        android:name="com.taipeiTravelGuide.view.fragment.TravelSpotFragment"
+        android:label="TravelSpotFragment">
+        <action
+            android:id="@+id/action_TravelSpotFragment_to_travelSpotWebViewFragment"
+            app:destination="@id/travelSpotWebViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/travelSpotWebViewFragment"
+        android:name="com.taipeiTravelGuide.view.fragment.TravelSpotWebViewFragment"
+        android:label="TravelSpotWebViewFragment" />
+</navigation>
