@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Light Mode 主題 -->
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light">-->
+<!--        <item name="colorPrimary">@color/light_header</item>-->
+<!--        <item name="android:statusBarColor">@color/light_status_bar</item>-->
+<!--        &lt;!&ndash; 其他屬性 &ndash;&gt;-->
+<!--    </style>-->
+
+    <!-- Dark Mode 主題 -->
+<!--    <style name="AppTheme.Dark" parent="Theme.AppCompat">-->
+<!--        <item name="colorPrimary">@color/dark_header</item>-->
+<!--        <item name="android:statusBarColor">@color/dark_status_bar</item>-->
+<!--        <item name="android:textColorPrimary">@android:color/white</item>-->
+<!--        &lt;!&ndash; 其他屬性 &ndash;&gt;-->
+<!--    </style>-->
+
+
+    <!--dialog no background android:windowSoftInputMode属性 https://blog.csdn.net/Android_Mnbvcxz/article/details/53558495 -->
+    <style name="dialogNobackground" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:statusBarColor">@color/clf6f6f6</item>
+    </style>
+
+
+    <style name="BottomFade">
+        <item name="android:windowEnterAnimation">@anim/in_bottomtotop</item>
+        <item name="android:windowExitAnimation">@anim/out_toptobottom</item>
+    </style>
+</resources>
