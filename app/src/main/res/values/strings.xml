@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">@string/travel_taipei</string>
-    <string name="travel_taipei">悠遊台北</string>
+    <string name="travel_taipei">Travel Doggy</string>
     <string name="travel_spot">遊憩景點</string>
     <string name="hot_news">最新消息</string>
     <string name="choose_language">選擇語言</string>
