@@ -14,14 +14,20 @@ class MainPageKt : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val application = application as TaipeiTravelApplication
-
-
         //狀態欄更新
         supportActionBar?.hide()
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = ContextCompat.getColor(this@MainPageKt, R.color.cl26a889)
+
+
+        val isDarkModeEnabled = TaipeiTravelApplication.isDarkModeEnabled
+        // 根據全局主題模式設置主題
+        if (isDarkModeEnabled) {
+            setTheme(R.style.AppTheme_Dark)
+            window.statusBarColor = ContextCompat.getColor(this@MainPageKt, R.color.cl005B4F)
+        } else {
+            setTheme(R.style.AppTheme)
+            window.statusBarColor = ContextCompat.getColor(this@MainPageKt, R.color.cl26a889)
+        }
 
         mBinding = ActivityMainPageBinding.inflate(layoutInflater)
         setContentView(mBinding?.root)

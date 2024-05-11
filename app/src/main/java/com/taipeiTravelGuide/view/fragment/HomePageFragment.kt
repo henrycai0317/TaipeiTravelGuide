@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.taipeiTravelGuide.R
 import com.taipeiTravelGuide.databinding.FragmentHomePageBinding
+import com.taipeiTravelGuide.view.TaipeiTravelApplication
 import com.taipeiTravelGuide.view.dialog.BaseDialog
 import com.taipeiTravelGuide.view.dialog.MultipleLanguageDialog
 import com.taipeiTravelGuide.viewModel.TaipeoTravelViewModel
@@ -82,13 +83,14 @@ class HomePageFragment : Fragment() {
             }
 
             ivSwitchDarkMode.setOnClickListener {
-                var isChange = mViewModel.isChangeDarkMode.value ?: false
-                isChange = !isChange
-                if (isChange) {
+                var iIsDarkMode = mViewModel.isChangeDarkMode.value ?: false
+                iIsDarkMode = !iIsDarkMode
+                if (iIsDarkMode) {
                     mViewModel.setIsChangeDarkMode(true)
                 } else {
                     mViewModel.setIsChangeDarkMode(false)
                 }
+                activity?.recreate()
             }
         }
     }
@@ -98,8 +100,10 @@ class HomePageFragment : Fragment() {
             mViewModel.isChangeDarkMode.observe(viewLifecycleOwner) { isChangeDarkMode ->
                 if (isChangeDarkMode) {
                     ivSwitchDarkMode.setImageResource(R.drawable.half_moon)
+                    TaipeiTravelApplication.isDarkModeEnabled = true
                 } else {
                     ivSwitchDarkMode.setImageResource(R.drawable.sun)
+                    TaipeiTravelApplication.isDarkModeEnabled = false
                 }
             }
             mViewModel.multipleLanguageSelectedId.observe(viewLifecycleOwner) { isSelectedId ->
