@@ -12,15 +12,25 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/ivSwitchDarkMode"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/sun"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/tvHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/travel_taipei"
-            android:textColor="@color/white"
             android:layout_marginTop="9dp"
             android:layout_marginBottom="9dp"
+            android:text="@string/travel_taipei"
+            android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -33,10 +43,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/earth"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/earth"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -45,23 +55,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:text="去最近消息"
+        android:textColor="@color/cl60C395"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/cl60C395"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/clHeader"
-        android:text="去最近消息"/>
+        app:layout_constraintTop_toBottomOf="@id/clHeader" />
 
     <TextView
         android:id="@+id/tvGoToTravelSpot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:text="遊憩景點"
+        android:textColor="@color/cl60C395"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/cl60C395"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvGoToHotNews"
-        android:text="遊憩景點"/>
+        app:layout_constraintTop_toBottomOf="@id/tvGoToHotNews" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

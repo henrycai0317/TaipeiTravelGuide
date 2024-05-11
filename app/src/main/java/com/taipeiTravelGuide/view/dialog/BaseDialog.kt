@@ -26,6 +26,12 @@ open class BaseDialog(pContext: Context, pStyle:Int):
         fun onFinish() {
 
         }
+        fun onFinish(pLanguageType:String) {
+
+        }
+        fun onFinish(pSelectedId:Int) {
+
+        }
 
 
     }

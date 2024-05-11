@@ -2,19 +2,33 @@
 <resources>
 
     <!-- Light Mode 主題 -->
-<!--    <style name="AppTheme" parent="Theme.AppCompat.Light">-->
-<!--        <item name="colorPrimary">@color/light_header</item>-->
-<!--        <item name="android:statusBarColor">@color/light_status_bar</item>-->
-<!--        &lt;!&ndash; 其他屬性 &ndash;&gt;-->
-<!--    </style>-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!--    狀態欄    -->
+        <item name="colorPrimary">@color/cl26a889</item>
+        <!--    背景    -->
+        <item name="backgroundColor">@color/white</item>
+        <!--    Status Bar 顏色    -->
+        <item name="android:statusBarColor">@color/cl60C395</item>
+        <!--    Text 顏色    -->
+        <item name="android:textColorPrimary">@color/black</item>
 
-    <!-- Dark Mode 主題 -->
-<!--    <style name="AppTheme.Dark" parent="Theme.AppCompat">-->
-<!--        <item name="colorPrimary">@color/dark_header</item>-->
-<!--        <item name="android:statusBarColor">@color/dark_status_bar</item>-->
-<!--        <item name="android:textColorPrimary">@android:color/white</item>-->
-<!--        &lt;!&ndash; 其他屬性 &ndash;&gt;-->
-<!--    </style>-->
+
+
+        <!-- 其他屬性 -->
+    </style>
+
+     Dark Mode 主題
+        <style name="AppTheme.Dark" parent="Theme.AppCompat">
+            <!--    狀態欄    -->
+            <item name="colorPrimary">@color/cl005B4F</item>
+            <!--    Status Bar 顏色    -->
+            <item name="android:statusBarColor">@color/cl004A47</item>
+            <!--    Text 顏色    -->
+            <item name="android:textColorPrimary">@color/white</item>
+            <!--    背景    -->
+            <item name="backgroundColor">@color/cl00201C</item>
+            <!-- 其他屬性 -->
+        </style>
 
 
     <!--dialog no background android:windowSoftInputMode属性 https://blog.csdn.net/Android_Mnbvcxz/article/details/53558495 -->

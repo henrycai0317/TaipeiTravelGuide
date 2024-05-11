@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.taipeiTravelGuide.R
 import com.taipeiTravelGuide.databinding.ActivityMainPageBinding
+import com.taipeiTravelGuide.view.TaipeiTravelApplication
 
 class MainPageKt : AppCompatActivity() {
 
@@ -13,6 +14,10 @@ class MainPageKt : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val application = application as TaipeiTravelApplication
+
+
         //狀態欄更新
         supportActionBar?.hide()
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -20,5 +25,6 @@ class MainPageKt : AppCompatActivity() {
 
         mBinding = ActivityMainPageBinding.inflate(layoutInflater)
         setContentView(mBinding?.root)
+
     }
 }
