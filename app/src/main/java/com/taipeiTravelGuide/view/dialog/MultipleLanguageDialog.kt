@@ -61,6 +61,7 @@ class MultipleLanguageDialog(
             findViewById<RadioButton>(iSelectedId)?.isChecked = true
         } ?: kotlin.run {
             mViewBinding.rbTraditionalCh.isChecked = true
+            mSelectedLanguageType = "zh-tw"
         }
 
         window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)

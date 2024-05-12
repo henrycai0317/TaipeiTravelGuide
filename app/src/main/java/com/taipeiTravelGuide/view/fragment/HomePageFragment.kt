@@ -12,7 +12,7 @@ import com.taipeiTravelGuide.databinding.FragmentHomePageBinding
 import com.taipeiTravelGuide.view.TaipeiTravelApplication
 import com.taipeiTravelGuide.view.dialog.BaseDialog
 import com.taipeiTravelGuide.view.dialog.MultipleLanguageDialog
-import com.taipeiTravelGuide.viewModel.TaipeoTravelViewModel
+import com.taipeiTravelGuide.viewModel.TaipeiTravelViewModel
 
 /**
  *  首頁
@@ -21,11 +21,12 @@ class HomePageFragment : Fragment() {
 
     private var mBinding: FragmentHomePageBinding? = null
     private var multipleDialog: MultipleLanguageDialog? = null
-    private val mViewModel by activityViewModels<TaipeoTravelViewModel>()
+    private val mViewModel by activityViewModels<TaipeiTravelViewModel>()
     private var mMultipleLanguageItemId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        mViewModel.callAttractionsApi("pLanguageType")
     }
 
     override fun onCreateView(
@@ -61,6 +62,7 @@ class HomePageFragment : Fragment() {
                                 override fun onFinish(pLanguageType: String) {
                                     super.onFinish(pLanguageType)
                                     //回傳API Language Type
+                                    callApi(pLanguageType)
                                 }
 
                                 override fun onFinish(pSelectedId: Int) {
@@ -93,6 +95,14 @@ class HomePageFragment : Fragment() {
                 activity?.recreate()
             }
         }
+    }
+
+    /**
+     *  打API
+     * */
+    private fun callApi(pLanguageType: String) {
+        mViewModel.callAttractionsApi(pLanguageType)
+        mViewModel.callEventsApi(pLanguageType)
     }
 
     private fun initObserver() {
