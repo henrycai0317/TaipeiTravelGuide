@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="travel_spot">Spot Wisata</string>
+    <string name="hot_news">Berita Terbaru</string>
+    <string name="choose_language">Pilih Bahasa</string>
+    <string name="tv_choose">Pilih</string>
+</resources>

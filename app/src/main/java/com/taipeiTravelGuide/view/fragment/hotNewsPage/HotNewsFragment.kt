@@ -1,4 +1,4 @@
-package com.taipeiTravelGuide.view.fragment
+package com.taipeiTravelGuide.view.fragment.hotNewsPage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.taipeiTravelGuide.databinding.FragmentWebViewTravelSpotBinding
+import com.taipeiTravelGuide.databinding.FragmentHotNewsBinding
 
-/***
- *
- * 遊憩景點WebView - 遊憩景點的內頁
- */
-class TravelSpotWebViewFragment : Fragment() {
-    private var mBinding: FragmentWebViewTravelSpotBinding? = null
+/**
+ *  最新消息-內頁
+ * */
+class HotNewsFragment : Fragment() {
+
+    private var mBinding: FragmentHotNewsBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class TravelSpotWebViewFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentWebViewTravelSpotBinding.inflate(inflater, container, false)
+        mBinding = FragmentHotNewsBinding.inflate(inflater, container, false)
         return mBinding?.root
     }
 

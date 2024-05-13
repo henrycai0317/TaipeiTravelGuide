@@ -4,7 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 
-open class BaseDialog(pContext: Context, pStyle:Int):
+open class BaseDialog(pContext: Context, pStyle: Int) :
     Dialog(pContext, pStyle) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,20 +18,9 @@ open class BaseDialog(pContext: Context, pStyle:Int):
         }
     }
 
-    interface  ItfDialogFinish {
-        fun onGoto() {
+    interface ItfDialogFinish {
 
-        }
-
-        fun onFinish() {
-
-        }
-        fun onFinish(pLanguageType:String) {
-
-        }
-        fun onFinish(pSelectedId:Int) {
-
-        }
+        fun onFinish(pLanguageType: String, pSelectedId: Int)
 
 
     }

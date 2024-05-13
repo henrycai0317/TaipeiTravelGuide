@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="travel_spot">관광 명소</string>
+    <string name="hot_news">최신 뉴스</string>
+    <string name="choose_language">언어 선택</string>
+    <string name="tv_choose">선택</string>
+</resources>

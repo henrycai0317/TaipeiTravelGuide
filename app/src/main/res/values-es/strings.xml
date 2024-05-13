@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="travel_spot">Lugares de interés turístico</string>
+    <string name="hot_news">Últimas noticias</string>
+    <string name="choose_language">Elegir idioma</string>
+    <string name="tv_choose">Elegir</string>
+</resources>

@@ -18,4 +18,14 @@
     <color name="cl005B4F">#005B4F</color>
     <color name="cl00201C">#00201C</color>
     <color name="cl011329">#011329</color>
+    <color name="cl333333">#333333</color>
+    <color name="clffffff">#FFFFFF</color>
+    <color name="cl02000000">#02000000</color>
+    <color name="cl03000000">#03000000</color>
+    <color name="cl04000000">#04000000</color>
+    <color name="cleeeeee">#eeeeee</color>
+    <color name="cld8d8d8">#d8d8d8</color>
+    <color name="cle5e5e5">#e5e5e5</color>
+    <color name="cl666666">#666666</color>
+    <color name="cl999999">#999999</color>
 </resources>

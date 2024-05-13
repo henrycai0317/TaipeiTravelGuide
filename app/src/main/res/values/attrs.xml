@@ -3,4 +3,6 @@
     <attr name="backgroundColor" format="reference|color" />
     <attr name="colorTextPrimary" format="reference|color" />
     <attr name="headerColor" format="reference|color" />
+    <attr name="cellCardColor" format="reference|color" />
+    <attr name="colorButton" format="reference|color" />
 </resources>

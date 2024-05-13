@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/HomePageFragment"
-        android:name="com.taipeiTravelGuide.view.fragment.HomePageFragment"
+        android:name="com.taipeiTravelGuide.view.fragment.homePage.HomePageFragment"
         android:label="HomePageFragment">
 
         <action
@@ -18,11 +18,11 @@
     </fragment>
     <fragment
         android:id="@+id/HotNewsFragment"
-        android:name="com.taipeiTravelGuide.view.fragment.HotNewsFragment"
+        android:name="com.taipeiTravelGuide.view.fragment.hotNewsPage.HotNewsFragment"
         android:label="HotNewsFragment" />
     <fragment
         android:id="@+id/TravelSpotFragment"
-        android:name="com.taipeiTravelGuide.view.fragment.TravelSpotFragment"
+        android:name="com.taipeiTravelGuide.view.fragment.travelSpotPage.TravelSpotFragment"
         android:label="TravelSpotFragment">
         <action
             android:id="@+id/action_TravelSpotFragment_to_travelSpotWebViewFragment"
@@ -30,6 +30,6 @@
     </fragment>
     <fragment
         android:id="@+id/travelSpotWebViewFragment"
-        android:name="com.taipeiTravelGuide.view.fragment.TravelSpotWebViewFragment"
+        android:name="com.taipeiTravelGuide.view.fragment.travelSpotPage.TravelSpotWebViewFragment"
         android:label="TravelSpotWebViewFragment" />
 </navigation>

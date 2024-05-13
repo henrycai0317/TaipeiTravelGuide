@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="travel_spot">観光スポット</string>
+    <string name="hot_news">最新ニュース</string>
+    <string name="choose_language">言語を選択</string>
+    <string name="tv_choose">選択</string>
+</resources>

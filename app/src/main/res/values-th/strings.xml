@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="travel_spot">สถานที่ท่องเที่ยว</string>
+    <string name="hot_news">ข่าวล่าสุด</string>
+    <string name="choose_language">เลือกภาษา</string>
+    <string name="tv_choose">เลือก</string>
+</resources>

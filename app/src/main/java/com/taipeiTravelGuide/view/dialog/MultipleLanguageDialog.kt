@@ -29,8 +29,12 @@ class MultipleLanguageDialog(
         mViewBinding.apply {
 
             llGapA.setOnClickListener {
-                mItfDialogFinish.onFinish(mSelectedLanguageType)
-                mSelectedId?.let { itemId -> mItfDialogFinish.onFinish(itemId) }
+                mSelectedId?.let { itemId ->
+                    mItfDialogFinish.onFinish(
+                        mSelectedLanguageType,
+                        itemId
+                    )
+                }
                 this@MultipleLanguageDialog.cancel()
             }
 
@@ -39,14 +43,31 @@ class MultipleLanguageDialog(
             }
 
             llGapB.setOnClickListener {
-                mItfDialogFinish.onFinish(mSelectedLanguageType)
-                mSelectedId?.let { itemId -> mItfDialogFinish.onFinish(itemId) }
+                mSelectedId?.let { itemId ->
+                    mItfDialogFinish.onFinish(
+                        mSelectedLanguageType,
+                        itemId
+                    )
+                }
                 this@MultipleLanguageDialog.cancel()
             }
 
             ivClose.setOnClickListener {
-                mItfDialogFinish.onFinish(mSelectedLanguageType)
-                mSelectedId?.let { itemId -> mItfDialogFinish.onFinish(itemId) }
+                mSelectedId?.let { itemId ->
+                    mItfDialogFinish.onFinish(
+                        mSelectedLanguageType,
+                        itemId
+                    )
+                }
+                this@MultipleLanguageDialog.cancel()
+            }
+            btnChoose.setOnClickListener {
+                mSelectedId?.let { itemId ->
+                    mItfDialogFinish.onFinish(
+                        mSelectedLanguageType,
+                        itemId
+                    )
+                }
                 this@MultipleLanguageDialog.cancel()
             }
         }

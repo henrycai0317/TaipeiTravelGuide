@@ -4,6 +4,9 @@
     <string name="travel_spot">遊憩景點</string>
     <string name="hot_news">最新消息</string>
     <string name="choose_language">選擇語言</string>
+    <string name="tv_choose">選擇</string>
+
+    <!--  語言選擇  -->
     <string name="traditional_chinese">正體中文</string>
     <string name="simplified_chinese">简体中文</string>
     <string name="english">English</string>
@@ -13,4 +16,6 @@
     <string name="indonesian">Bahasa Indonesia</string>
     <string name="thai">ภาษาไทย</string>
     <string name="vietnamese">Tiếng Việt</string>
+
+
 </resources>

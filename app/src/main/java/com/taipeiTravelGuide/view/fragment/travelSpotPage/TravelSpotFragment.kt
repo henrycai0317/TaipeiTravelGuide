@@ -1,4 +1,4 @@
-package com.taipeiTravelGuide.view.fragment
+package com.taipeiTravelGuide.view.fragment.travelSpotPage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.taipeiTravelGuide.databinding.FragmentHotNewsBinding
+import com.taipeiTravelGuide.R
+import com.taipeiTravelGuide.databinding.FragmentTravelSpotBinding
 
 /**
- *  最新消息-內頁
+ * 遊憩景點 - 內頁
  * */
-class HotNewsFragment : Fragment() {
-
-    private var mBinding: FragmentHotNewsBinding? = null
+class TravelSpotFragment : Fragment() {
+    private var mBinding: FragmentTravelSpotBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class HotNewsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentHotNewsBinding.inflate(inflater, container, false)
+        mBinding = FragmentTravelSpotBinding.inflate(inflater, container, false)
         return mBinding?.root
     }
 
@@ -35,6 +35,10 @@ class HotNewsFragment : Fragment() {
 
     private fun initListener() {
         mBinding?.apply {
+            tvGoToWebViewLatestNews.setOnClickListener {
+                findNavController().navigate(R.id.action_TravelSpotFragment_to_travelSpotWebViewFragment)
+            }
+
             ivBack.setOnClickListener {
                 findNavController().popBackStack()
             }

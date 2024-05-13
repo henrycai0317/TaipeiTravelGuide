@@ -1,5 +1,7 @@
-package com.taipeiTravelGuide.view.fragment
+package com.taipeiTravelGuide.view.fragment.homePage
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.taipeiTravelGuide.R
+import com.taipeiTravelGuide.RecyclerViewLayoutManagerUtils.setLinearLayoutManager
 import com.taipeiTravelGuide.databinding.FragmentHomePageBinding
 import com.taipeiTravelGuide.view.TaipeiTravelApplication
 import com.taipeiTravelGuide.view.dialog.BaseDialog
 import com.taipeiTravelGuide.view.dialog.MultipleLanguageDialog
+import com.taipeiTravelGuide.view.fragment.homePage.adapter.HomePageAdapter
 import com.taipeiTravelGuide.viewModel.TaipeiTravelViewModel
+import java.util.Locale
 
 /**
  *  首頁
@@ -24,9 +29,17 @@ class HomePageFragment : Fragment() {
     private val mViewModel by activityViewModels<TaipeiTravelViewModel>()
     private var mMultipleLanguageItemId: Int? = null
 
+    //HomePageAdapter
+    private val mHomePageAdapter: HomePageAdapter by lazy {
+        HomePageAdapter()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        mViewModel.callAttractionsApi("pLanguageType")
+        if (!mViewModel.mHasInitHomeFragment) {
+            callApi("zh-tw")
+            mViewModel.mHasInitHomeFragment = true
+        }
     }
 
     override fun onCreateView(
@@ -47,41 +60,49 @@ class HomePageFragment : Fragment() {
 
 
     private fun initViews() {
-
+        mBinding?.apply {
+            //init RecyclerView
+            context?.let { iContext ->
+                rvHomeContent.setLinearLayoutManager(iContext)
+                rvHomeContent.adapter = mHomePageAdapter
+            }
+        }
     }
 
     private fun initListener() {
         mBinding?.apply {
+            val iItfHomePageAdapterItemClick = object : HomePageAdapter.ItfHomePageAdapterClick {
+                override fun onHotNewsItemClick(pWebViewUrl: String) {
+                    findNavController().navigate(R.id.action_HomePageFragment_to_HotNewsFragment)
+                }
+            }
+            mHomePageAdapter.setOnClickItf(iItfHomePageAdapterItemClick)
+
             ivMultipleLanguage.setOnClickListener {
                 activity?.let { iAct ->
                     multipleDialog?.show() ?: kotlin.run {
                         multipleDialog = MultipleLanguageDialog(mContext = iAct,
                             mSelectedId = mMultipleLanguageItemId,
                             object : BaseDialog.ItfDialogFinish {
-
-                                override fun onFinish(pLanguageType: String) {
-                                    super.onFinish(pLanguageType)
+                                override fun onFinish(pLanguageType: String, pSelectedId: Int) {
                                     //回傳API Language Type
-                                    callApi(pLanguageType)
-                                }
-
-                                override fun onFinish(pSelectedId: Int) {
-                                    super.onFinish(pSelectedId)
-                                    //回傳ViewModel Selected Id
-                                    mViewModel.setMultipleLanguageSelectedId(pSelectedId)
+                                    if (mViewModel.tampSelectedId != pSelectedId) {
+                                        callApi(pLanguageType)
+                                        activity?.let { iAct ->
+                                            val newLocale =
+                                                Locale(pLanguageType) // 新的語言代碼，例如中文簡體為"zh"
+                                            updateLocale(iAct, newLocale)
+                                            // 重新加載畫面以更新語言
+                                            iAct.recreate()
+                                        }
+                                        //回傳ViewModel Selected Id
+                                        mViewModel.setMultipleLanguageSelectedId(pSelectedId)
+                                    }
                                 }
                             })
                         multipleDialog?.show()
                     }
                 }
-            }
-
-            tvGoToHotNews.setOnClickListener {
-                findNavController().navigate(R.id.action_HomePageFragment_to_HotNewsFragment)
-            }
-
-            tvGoToTravelSpot.setOnClickListener {
-                findNavController().navigate(R.id.action_HomePageFragment_to_TravelSpotFragment)
             }
 
             ivSwitchDarkMode.setOnClickListener {
@@ -98,9 +119,20 @@ class HomePageFragment : Fragment() {
     }
 
     /**
+     * 語系變更
+     * */
+    private fun updateLocale(context: Context, locale: Locale) {
+        Locale.setDefault(locale)
+        val configuration = Configuration()
+        configuration.setLocale(locale)
+        context.resources.updateConfiguration(configuration, context.resources.displayMetrics)
+    }
+
+    /**
      *  打API
      * */
     private fun callApi(pLanguageType: String) {
+        mHomePageAdapter.setApiDataClearToShowShimmer()
         mViewModel.callAttractionsApi(pLanguageType)
         mViewModel.callEventsApi(pLanguageType)
     }
@@ -119,6 +151,14 @@ class HomePageFragment : Fragment() {
             mViewModel.multipleLanguageSelectedId.observe(viewLifecycleOwner) { isSelectedId ->
                 multipleDialog?.setMultipleLanguageId(isSelectedId)
                 mMultipleLanguageItemId = isSelectedId
+            }
+
+            mViewModel.eventsApi.observe(viewLifecycleOwner) { iResEvents ->
+                mHomePageAdapter.setResEventsData(iResEvents)
+            }
+
+            mViewModel.attractionsApi.observe(viewLifecycleOwner) { iResAttractions ->
+                mHomePageAdapter.setResAttractionsData(iResAttractions)
             }
         }
     }

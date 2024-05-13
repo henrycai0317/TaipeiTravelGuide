@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="travel_spot">Điểm du lịch</string>
+    <string name="hot_news">Tin mới nhất</string>
+    <string name="choose_language">Chọn ngôn ngữ</string>
+    <string name="tv_choose">Chọn</string>
+</resources>

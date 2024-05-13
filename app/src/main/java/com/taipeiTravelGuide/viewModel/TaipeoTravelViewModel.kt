@@ -20,7 +20,16 @@ class TaipeiTravelViewModel : ViewModel() {
         TravelService()
     }
 
+    //API 相關
+    private val _attractionsApi:MutableLiveData<Response<AttractionsResponse>> = MutableLiveData()
+    val attractionsApi:LiveData<Response<AttractionsResponse>> get() = _attractionsApi
+
+    private val _eventsApi:MutableLiveData<Response<EventsResponse>> = MutableLiveData()
+    val eventsApi:LiveData<Response<EventsResponse>> get() = _eventsApi
+
     //UI相關
+    var mHasInitHomeFragment = false //防止螢幕轉向重複call API
+    var tampSelectedId = -1 //防止選擇同一個語言，重複call API
     private val _isChangeDarkMode = MutableLiveData<Boolean>() //Dark Mode
     val isChangeDarkMode: LiveData<Boolean> get() = _isChangeDarkMode //Dark Mode
 
@@ -29,7 +38,10 @@ class TaipeiTravelViewModel : ViewModel() {
         get() = _multipleLanguageSelectedId
 
     fun setMultipleLanguageSelectedId(itemId: Int) {  //多國語言RadioGroup
-        _multipleLanguageSelectedId.value = itemId
+        if (tampSelectedId != itemId) {
+            _multipleLanguageSelectedId.value = itemId
+            tampSelectedId = itemId
+        }
     }
 
     //Dark Mode 設定
@@ -53,6 +65,7 @@ class TaipeiTravelViewModel : ViewModel() {
                 } else {
                     Log.d(TAG, "onResponse: not success ${response.code()}")
                 }
+                _attractionsApi.value = response
             }
 
             override fun onFailure(call: Call<AttractionsResponse>, t: Throwable) {
@@ -78,6 +91,7 @@ class TaipeiTravelViewModel : ViewModel() {
                 } else {
                     Log.d(TAG, "onResponse: not success ${response.code()}")
                 }
+                _eventsApi.value = response
             }
 
             override fun onFailure(call: Call<EventsResponse>, t: Throwable) {
