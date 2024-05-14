@@ -87,7 +87,7 @@ class HomePageFragment : Fragment() {
                                 override fun onFinish(pLanguageType: String, pSelectedId: Int) {
                                     //回傳API Language Type
                                     if (mViewModel.tampSelectedId != pSelectedId) {
-                                        callApi(pLanguageType)
+                                        callApi(pLanguageType, true)
                                         activity?.let { iAct ->
                                             val newLocale =
                                                 Locale(pLanguageType) // 新的語言代碼，例如中文簡體為"zh"
@@ -131,10 +131,12 @@ class HomePageFragment : Fragment() {
     /**
      *  打API
      * */
-    private fun callApi(pLanguageType: String) {
+    private fun callApi(pLanguageType: String, pIsChangeLanguage: Boolean = false) {
         mHomePageAdapter.setApiDataClearToShowShimmer()
-        mViewModel.callAttractionsApi(pLanguageType)
-        mViewModel.callEventsApi(pLanguageType)
+        activity?.let { iAct ->
+            mViewModel.callAttractionsApi(iAct, pLanguageType, pIsChangeLanguage)
+            mViewModel.callEventsApi(iAct, pLanguageType, pIsChangeLanguage)
+        }
     }
 
     private fun initObserver() {
