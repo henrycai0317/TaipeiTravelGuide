@@ -115,6 +115,7 @@ class TaipeiTravelViewModel : ViewModel() {
             val iProcessDialog = mProcessDialog
             if (iProcessDialog == null && pContext != null) {
                 val iiProcessDialog = ProcessDialog(pContext)
+                iiProcessDialog.setCancelable(false)
                 iiProcessDialog.show()
                 mProcessDialog = iiProcessDialog
             }

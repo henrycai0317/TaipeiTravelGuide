@@ -40,18 +40,14 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/tvWebViewHotNews"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Hello! 我是最近消息頁面"
-        android:textColor="?attr/colorTextPrimary"
-        android:textSize="26sp"
-        android:textStyle="bold"
+    <WebView
+        android:id="@+id/wvWebView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/clffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/clHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/clHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

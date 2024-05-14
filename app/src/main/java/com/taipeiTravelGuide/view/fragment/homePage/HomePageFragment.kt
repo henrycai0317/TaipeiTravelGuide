@@ -16,6 +16,7 @@ import com.taipeiTravelGuide.view.TaipeiTravelApplication
 import com.taipeiTravelGuide.view.dialog.BaseDialog
 import com.taipeiTravelGuide.view.dialog.MultipleLanguageDialog
 import com.taipeiTravelGuide.view.fragment.homePage.adapter.HomePageAdapter
+import com.taipeiTravelGuide.view.fragment.hotNewsPage.HotNewsFragment
 import com.taipeiTravelGuide.viewModel.TaipeiTravelViewModel
 import java.util.Locale
 
@@ -72,10 +73,15 @@ class HomePageFragment : Fragment() {
     private fun initListener() {
         mBinding?.apply {
             val iItfHomePageAdapterItemClick = object : HomePageAdapter.ItfHomePageAdapterClick {
+                /** 最新消息卡片點擊*/
                 override fun onHotNewsItemClick(pWebViewUrl: String) {
-                    findNavController().navigate(R.id.action_HomePageFragment_to_HotNewsFragment)
+                    findNavController().navigate(
+                        R.id.action_HomePageFragment_to_HotNewsFragment,
+                        HotNewsFragment.newBundle(pWebViewUrl)
+                    )
                 }
 
+                /** 遊憩景點 卡片點擊*/
                 override fun onTravelSpotItemClick() {
                     findNavController().navigate(R.id.action_HomePageFragment_to_TravelSpotFragment)
                 }
