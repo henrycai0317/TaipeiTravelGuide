@@ -4,4 +4,8 @@
     <string name="hot_news">最新消息</string>
     <string name="choose_language">選擇語言</string>
     <string name="tv_choose">选择</string>
+
+    <!--  API Message  -->
+    <string name="api_error_message">系統忙碌中，請稍後再試</string>
+    <string name="api_no_data">很抱歉! 目前無資料</string>
 </resources>

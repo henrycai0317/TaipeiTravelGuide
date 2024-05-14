@@ -4,4 +4,8 @@
     <string name="hot_news">ข่าวล่าสุด</string>
     <string name="choose_language">เลือกภาษา</string>
     <string name="tv_choose">เลือก</string>
+
+    <!--  API Message  -->
+    <string name="api_error_message">ระบบไม่ว่าง โปรดลองอีกครั้งในภายหลัง</string>
+    <string name="api_no_data">ขอโทษ! ขณะนี้ไม่มีข้อมูล</string>
 </resources>

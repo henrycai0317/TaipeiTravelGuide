@@ -4,4 +4,8 @@
     <string name="hot_news">Berita Terbaru</string>
     <string name="choose_language">Pilih Bahasa</string>
     <string name="tv_choose">Pilih</string>
+
+    <!--  API Message  -->
+    <string name="api_error_message">Sistem sibuk, silakan coba lagi nanti</string>
+    <string name="api_no_data">Maaf! Saat ini tidak ada data yang tersedia</string>
 </resources>

@@ -4,4 +4,8 @@
     <string name="hot_news">Tin mới nhất</string>
     <string name="choose_language">Chọn ngôn ngữ</string>
     <string name="tv_choose">Chọn</string>
+
+    <!--  API Message  -->
+    <string name="api_error_message">Hệ thống bận rộn, vui lòng thử lại sau</string>
+    <string name="api_no_data">Xin lỗi! Hiện tại không có dữ liệu</string>
 </resources>

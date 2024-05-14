@@ -4,4 +4,9 @@
     <string name="hot_news">最新ニュース</string>
     <string name="choose_language">言語を選択</string>
     <string name="tv_choose">選択</string>
+
+    <!--  API Message  -->
+    <string name="api_error_message">システムがビジーです。後でやり直してください</string>
+    <string name="api_no_data">申し訳ありません！現在、データがありません</string>
+
 </resources>

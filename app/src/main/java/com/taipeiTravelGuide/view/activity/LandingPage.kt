@@ -46,7 +46,7 @@ class LandingPage : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         CoroutineScope(Dispatchers.Main).launch {
-            delay(6000)
+            delay(3000)
             //開啟首頁
             startActivity(Intent(this@LandingPage, MainPageKt::class.java))
             finish()

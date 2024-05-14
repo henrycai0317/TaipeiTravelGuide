@@ -17,5 +17,10 @@
     <string name="thai">ภาษาไทย</string>
     <string name="vietnamese">Tiếng Việt</string>
 
+    <!--  API Message  -->
+    <string name="api_error_message">系統忙碌中，請稍後再試</string>
+    <string name="api_no_data">很抱歉! 目前無資料</string>
+    <string name="events_api">(Events API)</string>
+
 
 </resources>
