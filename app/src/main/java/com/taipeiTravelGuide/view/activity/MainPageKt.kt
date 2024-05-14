@@ -23,10 +23,10 @@ class MainPageKt : AppCompatActivity() {
         // 根據全局主題模式設置主題
         if (isDarkModeEnabled) {
             setTheme(R.style.AppTheme_Dark)
-            window.statusBarColor = ContextCompat.getColor(this@MainPageKt, R.color.cl005B4F)
+            window.statusBarColor = ContextCompat.getColor(this@MainPageKt, R.color.cl004A47)
         } else {
             setTheme(R.style.AppTheme)
-            window.statusBarColor = ContextCompat.getColor(this@MainPageKt, R.color.cl26a889)
+            window.statusBarColor = ContextCompat.getColor(this@MainPageKt, R.color.teal_700)
         }
 
         mBinding = ActivityMainPageBinding.inflate(layoutInflater)

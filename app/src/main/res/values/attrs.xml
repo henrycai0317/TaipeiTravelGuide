@@ -5,4 +5,5 @@
     <attr name="headerColor" format="reference|color" />
     <attr name="cellCardColor" format="reference|color" />
     <attr name="colorButton" format="reference|color" />
+    <attr name="colorTextContentTitle" format="reference|color" />
 </resources>

@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:text="@string/hot_news"
-        android:textColor="?attr/colorTextPrimary"
+        android:textColor="?attr/colorTextContentTitle"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"

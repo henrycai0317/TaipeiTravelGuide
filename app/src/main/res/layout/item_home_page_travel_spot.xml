@@ -14,7 +14,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/travel_spot"
         android:textSize="20sp"
-        android:textColor="?attr/colorTextPrimary"
+        android:textColor="?attr/colorTextContentTitle"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
