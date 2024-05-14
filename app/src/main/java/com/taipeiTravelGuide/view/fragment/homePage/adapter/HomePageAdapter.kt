@@ -5,15 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.taipeiTravelGuide.StringUtils.checkString
 import com.taipeiTravelGuide.ViewUtils.setViewGone
-import com.taipeiTravelGuide.ViewUtils.setViewInvisible
 import com.taipeiTravelGuide.ViewUtils.setViewVisible
 import com.taipeiTravelGuide.connect.response.AttractionsResponse
 import com.taipeiTravelGuide.connect.response.EventsResponse
 import com.taipeiTravelGuide.databinding.ItemHomePageHotNewsBinding
 import com.taipeiTravelGuide.databinding.ItemHomePageTravelSpotBinding
 import com.taipeiTravelGuide.databinding.ItemViewHotNewsBinding
+import com.taipeiTravelGuide.databinding.ItemViewTravelSpotBinding
+import com.taipeiTravelGuide.model.Attractions
 import com.taipeiTravelGuide.model.EventsData
 import retrofit2.Response
 
@@ -25,6 +27,7 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface ItfHomePageAdapterClick {
         fun onHotNewsItemClick(pWebViewUrl: String)  //點擊消息Card Item
+        fun onTravelSpotItemClick()  //遊憩景點Card Item
     }
 
     private val FIRST_HOT_NEWS = 0
@@ -58,6 +61,7 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun setResAttractionsData(pResAttractions: Response<AttractionsResponse>?) {
         mResAttractions = pResAttractions
+        notifyItemChanged(1)
     }
 
     /**
@@ -187,8 +191,71 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
      */
     inner class ItemTravelSpotView(private val mBinding: ItemHomePageTravelSpotBinding) :
         RecyclerView.ViewHolder(mBinding.root) {
-        fun checkingApi(mResAttractions: Response<AttractionsResponse>?) {
 
+        @Synchronized
+        fun checkingApi(pResAttractions: Response<AttractionsResponse>?) {
+            if (pResAttractions != null) {
+                if (pResAttractions.isSuccessful) {
+                    setData(pResAttractions)
+                } else {
+                    showApiError()
+                }
+            } else {
+                showShimmer()
+            }
+
+        }
+
+        private fun setData(pResAttractions: Response<AttractionsResponse>) {
+            defaultStatus()
+            mBinding.apply {
+                llTravelSpotContainer.setViewVisible()
+                llTravelSpotContainer.removeAllViews()
+                pResAttractions.body()?.data?.let { iData ->
+                    val iAttractionsDataList = if (iData.size >= 3) {
+                        iData.subList(0, 3)
+                    } else {
+                        iData.subList(0, iData.size)
+                    }
+                    if (iData.isEmpty()) {
+                        showNoData()
+                    } else {
+                        iAttractionsDataList.forEach { itemData ->
+                            val iView = createItemView(itemData)
+                            iView.setOnClickListener {
+                                mItfItfHomePageViewClick?.onTravelSpotItemClick()
+                            }
+                            llTravelSpotContainer.addView(iView)
+                        }
+                    }
+                }
+            }
+        }
+
+        private fun createItemView(pItemData: Attractions): View {
+            val itemViewBinding =
+                ItemViewTravelSpotBinding.inflate(LayoutInflater.from(mBinding.root.context))
+            itemViewBinding.apply {
+                tvTravelSpotTitle.text = pItemData.name.checkString()
+                tvTravelSpotContent.text = pItemData.introduction.checkString()
+                val iListImages = pItemData.images
+                if (iListImages.isNotEmpty()) {
+                    val iMageUrl = iListImages[0].src.checkString()
+                    Glide.with(ivTravelSpotImage.context)
+                        .load(iMageUrl)
+                        .into(ivTravelSpotImage)
+                }
+            }
+            return itemViewBinding.root
+        }
+
+        private fun showApiError() {
+            defaultStatus()
+            mBinding.icTravelSpotApiError.root.setViewVisible()
+        }
+        private fun showNoData() {
+            defaultStatus()
+            mBinding.icNoData.root.setViewVisible()
         }
 
         private fun showShimmer() {
@@ -199,6 +266,7 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private fun defaultStatus() {
             mBinding.apply {
                 icTravelSpotShimmer.root.setViewGone()
+                icNoData.root.setViewGone()
                 llTravelSpotContainer.setViewGone()
             }
         }

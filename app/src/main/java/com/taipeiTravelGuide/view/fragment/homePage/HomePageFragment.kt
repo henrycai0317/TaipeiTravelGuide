@@ -75,6 +75,10 @@ class HomePageFragment : Fragment() {
                 override fun onHotNewsItemClick(pWebViewUrl: String) {
                     findNavController().navigate(R.id.action_HomePageFragment_to_HotNewsFragment)
                 }
+
+                override fun onTravelSpotItemClick() {
+                    findNavController().navigate(R.id.action_HomePageFragment_to_TravelSpotFragment)
+                }
             }
             mHomePageAdapter.setOnClickItf(iItfHomePageAdapterItemClick)
 

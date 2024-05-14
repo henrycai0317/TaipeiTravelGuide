@@ -6,4 +6,5 @@
     <attr name="cellCardColor" format="reference|color" />
     <attr name="colorButton" format="reference|color" />
     <attr name="colorTextContentTitle" format="reference|color" />
+    <attr name="colorFootPrintRight" format="reference|color" />
 </resources>
