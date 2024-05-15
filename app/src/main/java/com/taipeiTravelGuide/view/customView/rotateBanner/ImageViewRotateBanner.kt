@@ -18,6 +18,9 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/**
+ *  輪播 Banner View
+ * */
 class ImageViewRotateBanner(
     context: Context,
     attrs: AttributeSet? = null

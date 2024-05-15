@@ -8,4 +8,5 @@
     <!--  API Message  -->
     <string name="api_error_message">System busy, please try again later</string>
     <string name="api_no_data">Sorry! No data available at the moment</string>
+    <string name="tv_open_time">營業時間:</string>
 </resources>

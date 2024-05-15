@@ -11,6 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.taipeiTravelGuide.ClassTrans
 import com.taipeiTravelGuide.EAppUtil.serializable
+import com.taipeiTravelGuide.R
+import com.taipeiTravelGuide.StringUtils.checkString
+import com.taipeiTravelGuide.ViewUtils.setViewGone
+import com.taipeiTravelGuide.ViewUtils.setViewVisible
+import com.taipeiTravelGuide.ViewUtils.setViewVisibleOrGone
 import com.taipeiTravelGuide.databinding.FragmentTravelSpotBinding
 import com.taipeiTravelGuide.model.Attractions
 import com.taipeiTravelGuide.view.customView.rotateBanner.ImageViewRotateBanner
@@ -20,7 +25,6 @@ import com.taipeiTravelGuide.view.customView.rotateBanner.ImageViewRotateBanner
  * */
 class TravelSpotFragment : Fragment() {
     private var mBinding: FragmentTravelSpotBinding? = null
-    private var mAttractionsData: Attractions? = null
     private val mTravelSpotViewModel: TravelSpotViewModel by lazy {
         ViewModelProvider(this@TravelSpotFragment)[TravelSpotViewModel::class.java]
     }
@@ -34,26 +38,17 @@ class TravelSpotFragment : Fragment() {
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        Log.d("TravelSpotFragment", "onCreate: ")
-    }
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("TravelSpotFragment", "onCreateView: ")
         mBinding = FragmentTravelSpotBinding.inflate(inflater, container, false)
         return mBinding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("TravelSpotFragment", "onViewCreated: ")
 
         initViews()
         initListener()
@@ -80,10 +75,7 @@ class TravelSpotFragment : Fragment() {
     private fun showData(iAttractionsData: Attractions) {
         mBinding?.apply {
             iAttractionsData.images.let { iImageList ->
-                Log.d(
-                    "TravelSpotFragment",
-                    "initViews: $iImageList, CurrentIndex: ${mTravelSpotViewModel.getCurrentImageRotateIndex()}"
-                )
+                /**輪播初始化*/
                 val iCurrentRotatePair = mTravelSpotViewModel.getCurrentImageRotateIndex()
                 ivRotateBanner.showRotateBanner(
                     iImageList,
@@ -91,14 +83,38 @@ class TravelSpotFragment : Fragment() {
                     iCurrentRotatePair?.second ?: 0,
                 )
             }
+
+            iAttractionsData.apply {
+                tvHeaderTitle.text = name.ifEmpty { R.string.travel_spot.toString() }
+                /**營業時間*/
+                clOpenTime.setViewVisibleOrGone(open_time.isNotEmpty())
+                tvOpenTime.text = open_time.checkString()
+
+                /**地址*/
+                clAddress.setViewVisibleOrGone(address.isNotEmpty())
+                tvAddress.text = address.checkString()
+
+                /**連絡電話*/
+                clPhoneCall.setViewVisibleOrGone(tel.isNotEmpty())
+                tvPhoneNumber.text = tel.checkString()
+
+                /**網址*/
+                clInternet.setViewVisibleOrGone(official_site.isNotEmpty())
+                tvInternetUrl.text = official_site.checkString()
+
+                /**文章內容*/
+                clContentTxt.setViewVisibleOrGone(introduction.isNotEmpty())
+                tvContentTxt.text = introduction.checkString()
+
+            }
         }
     }
 
     private fun initListener() {
         mBinding?.apply {
-//            tvGoToWebViewLatestNews.setOnClickListener {
-//                findNavController().navigate(R.id.action_TravelSpotFragment_to_travelSpotWebViewFragment)
-//            }
+            clInternet.setOnClickListener {
+                findNavController().navigate(R.id.action_TravelSpotFragment_to_travelSpotWebViewFragment)
+            }
 
             ivRotateBanner.setOnRotateChangeListener(object :
                 ImageViewRotateBanner.ItfRotateBannerCallBack {

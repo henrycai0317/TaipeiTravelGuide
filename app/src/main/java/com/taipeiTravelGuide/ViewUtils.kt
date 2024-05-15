@@ -12,6 +12,14 @@ object ViewUtils {
         this.visibility = View.GONE
     }
 
+    fun View.setViewVisibleOrGone(pIsVisible: Boolean) {
+        if (pIsVisible) {
+            this.setViewVisible()
+        } else {
+            this.setViewGone()
+        }
+    }
+
     fun View.setViewInvisible() {
         this.visibility = View.INVISIBLE
     }

@@ -21,6 +21,10 @@
     <string name="api_error_message">系統忙碌中，請稍後再試</string>
     <string name="api_no_data">很抱歉! 目前無資料</string>
     <string name="events_api">(Events API)</string>
+    <string name="tv_open_time">營業時間:</string>
+    <string name="tv_address">地址:</string>
+    <string name="tv_internet_address">網址:</string>
+    <string name="tv_contract_phone">連絡電話:</string>
 
 
 </resources>
