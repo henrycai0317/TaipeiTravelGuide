@@ -23,6 +23,10 @@ class ImageViewRotateBanner(
     attrs: AttributeSet? = null
 ) : RelativeLayout(context, attrs) {
 
+    interface ItfRotateBannerCallBack {
+        fun onCurrentIndexChange(pPairImageAndIndicatorIndex: Pair<Int, Int>)
+    }
+
     private val mBinding: ViewImageRotateBannerBinding =
         ViewImageRotateBannerBinding.inflate(LayoutInflater.from(context), this, true)
     private var mIsUserDragging = false
@@ -33,6 +37,7 @@ class ImageViewRotateBanner(
     private var mOriginalRotateSize = ArrayList<Attractions.Image>() //原始未加入末、首圖片
     private var mCurrentIndex = 1   //Banner輪播順序控制
     private var mCurrentIndicator = 0 //Banner Indicator Flag
+    private var mItfRotateBannerCallBack: ItfRotateBannerCallBack? = null  //Index 回調
 
     private val mAdOnPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
 
@@ -40,8 +45,6 @@ class ImageViewRotateBanner(
             super.onPageScrollStateChanged(state)
             //停止滑動 0
             if (state == ViewPager.SCROLL_STATE_IDLE) {
-                Log.d("onPageScrollStateChanged", "onPageScrollStateChanged: 停止滑動$state ")
-
                 if (mCurrentIndex == 0) {
                     mBinding.vpAd.setCurrentItem(mAdList.size - 2, false)
                 } else if (mCurrentIndex == mAdList.size - 1) {
@@ -51,13 +54,11 @@ class ImageViewRotateBanner(
 
             //開始滑動 1
             if (state == ViewPager.SCROLL_STATE_DRAGGING) {
-                Log.d("onPageScrollStateChanged", "onPageScrollStateChanged: 開始滑動$state ")
                 mRotateJob?.cancel()
                 mIsUserDragging = true
 
             }
             if (state == ViewPager.SCROLL_STATE_SETTLING) {
-                Log.d("onPageScrollStateChanged", "onPageScrollStateChanged: 設置好滑動$state ")
                 if (mIsUserDragging) {
                     startAutoMoving()
                     mIsUserDragging = false
@@ -81,16 +82,29 @@ class ImageViewRotateBanner(
                 setIndicator(showIndicatorPosition)
                 mCurrentIndicator = showIndicatorPosition
             }
-
+            mItfRotateBannerCallBack?.onCurrentIndexChange(
+                Pair(
+                    mCurrentIndex,
+                    showIndicatorPosition
+                )
+            )
         }
     }
 
+    fun setOnRotateChangeListener(pItfRotateCallBack: ItfRotateBannerCallBack) {
+        mItfRotateBannerCallBack = pItfRotateCallBack
+    }
 
     /**
      *  有給AD資料，才開始輪播
+     *  @param pAdList 輪播Data
+     *  @param pDefaultImagePosition 輪播初始化顯示圖位置
+     *  @param pDefaultIndicatorPosition 輪播初始化顯示Indicator位置
      * */
     fun showRotateBanner(
         pAdList: ArrayList<Attractions.Image>,
+        pDefaultImagePosition: Int,
+        pDefaultIndicatorPosition: Int,
     ) {
         if (pAdList.isNotEmpty()) {
 
@@ -110,13 +124,13 @@ class ImageViewRotateBanner(
             //暫時解法，解決Indicator初始化未顯示畫面上，滑動才顯示
             CoroutineScope(Dispatchers.Main).launch {
                 delay(100)
-                setIndicator(0)
+                setIndicator(pDefaultIndicatorPosition)
             }
 
             mAdAdapter = ImageViewRotateAdapter(mAdList)
             mBinding.vpAd.adapter = mAdAdapter
             mBinding.vpAd.registerOnPageChangeCallback(mAdOnPageChangeCallback)
-            mBinding.vpAd.setCurrentItem(1, false)
+            mBinding.vpAd.setCurrentItem(pDefaultImagePosition, false)
             // 開始協程，定時滑動 ViewPager
             startAutoMoving()
         }
@@ -135,22 +149,6 @@ class ImageViewRotateBanner(
         var iCurrentRotate = mBinding.vpAd.currentItem
         iCurrentRotate++
         mBinding.vpAd.currentItem = iCurrentRotate
-//        try {
-//            var iCurrentRotate = mBinding.vpAd.currentItem
-//            iCurrentRotate++
-//            iCurrentRotate %= mBannerInOrder.size
-//            if (mBinding.vpAd.currentItem != iCurrentRotate) {  // 廣告只允許切到不同張
-//                mBinding.vpAd.currentItem = iCurrentRotate
-//                Log.d("rotateBanner", "rotateBanner: 滑動中 $iCurrentRotate")
-//            } else {
-//                Log.d(
-//                    "異常",
-//                    "viewpager getCurrentItem :" + mBinding.vpAd.currentItem + " 預計切到:" + iCurrentRotate + "，同一張?，[LOG] mBannerName.size: " + mBannerInOrder.size
-//                )
-//            }
-//        } catch (ex: Exception) {
-//            ex.printStackTrace()
-//        }
     }
 
     /**
@@ -177,7 +175,6 @@ class ImageViewRotateBanner(
             )
             mBinding.llAdIndicator.addView(ivIndicator)
         }
-
 
     }
 
