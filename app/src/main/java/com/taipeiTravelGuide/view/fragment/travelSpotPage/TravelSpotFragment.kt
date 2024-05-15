@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.taipeiTravelGuide.ClassTrans
+import com.taipeiTravelGuide.EAppUtil
 import com.taipeiTravelGuide.EAppUtil.serializable
 import com.taipeiTravelGuide.R
 import com.taipeiTravelGuide.StringUtils.checkString
@@ -112,10 +113,28 @@ class TravelSpotFragment : Fragment() {
 
     private fun initListener() {
         mBinding?.apply {
+            /**網路點擊*/
             clInternet.setOnClickListener {
-                findNavController().navigate(R.id.action_TravelSpotFragment_to_travelSpotWebViewFragment)
+                findNavController().navigate(
+                    R.id.action_TravelSpotFragment_to_travelSpotWebViewFragment,
+                    TravelSpotWebViewFragment.newBundle(
+                        mTravelSpotViewModel.getAttractionsData()?.official_site.checkString(),
+                        mTravelSpotViewModel.getAttractionsData()?.name.checkString(),
+                    )
+                )
             }
 
+            /**打電話*/
+            clPhoneCall.setOnClickListener {
+                activity?.let { iAct ->
+                    EAppUtil.callTel(
+                        iAct,
+                        mTravelSpotViewModel.getAttractionsData()?.tel.checkString()
+                    )
+                }
+            }
+
+            /**輪播位置監聽*/
             ivRotateBanner.setOnRotateChangeListener(object :
                 ImageViewRotateBanner.ItfRotateBannerCallBack {
                 override fun onCurrentIndexChange(pPairImageAndIndicatorIndex: Pair<Int, Int>) {
@@ -123,6 +142,7 @@ class TravelSpotFragment : Fragment() {
                 }
             })
 
+            /**返回鍵*/
             ivBack.setOnClickListener {
                 findNavController().popBackStack()
             }

@@ -1,7 +1,6 @@
 package com.taipeiTravelGuide.view.fragment.hotNewsPage
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +13,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.taipeiTravelGuide.StringUtils.checkString
+import com.taipeiTravelGuide.StringUtils.secureUrl
 import com.taipeiTravelGuide.databinding.FragmentHotNewsBinding
 import com.taipeiTravelGuide.view.dialog.ProcessDialog
 
@@ -28,16 +28,16 @@ class HotNewsFragment : Fragment() {
 
 
     companion object {
-        private const val EXTRA_WEB_VIEW_URL = "EXTRA_WEB_VIEW_URL"
+        private const val EXTRA_HOT_NEWS_WEB_VIEW_URL = "EXTRA_HOT_NEWS_WEB_VIEW_URL"
 
         fun newBundle(pUrl: String) = Bundle().apply {
-            putString(EXTRA_WEB_VIEW_URL, pUrl)
+            putString(EXTRA_HOT_NEWS_WEB_VIEW_URL, pUrl)
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mWebViewUrl = arguments?.getString(EXTRA_WEB_VIEW_URL).checkString()
+        mWebViewUrl = arguments?.getString(EXTRA_HOT_NEWS_WEB_VIEW_URL).checkString()
     }
 
     override fun onCreateView(
@@ -104,7 +104,9 @@ class HotNewsFragment : Fragment() {
             isClickable = true
             showProgressDialog()
             webChromeClient = WebChromeClient()
-            loadUrl(mWebViewUrl.checkString())
+            mWebViewUrl?.let { iWebViewUrl ->
+                loadUrl(iWebViewUrl.secureUrl())
+            }
         }
     }
 
