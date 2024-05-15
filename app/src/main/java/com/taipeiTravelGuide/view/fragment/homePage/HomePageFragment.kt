@@ -12,11 +12,13 @@ import androidx.navigation.fragment.findNavController
 import com.taipeiTravelGuide.R
 import com.taipeiTravelGuide.RecyclerViewLayoutManagerUtils.setLinearLayoutManager
 import com.taipeiTravelGuide.databinding.FragmentHomePageBinding
+import com.taipeiTravelGuide.model.Attractions
 import com.taipeiTravelGuide.view.TaipeiTravelApplication
 import com.taipeiTravelGuide.view.dialog.BaseDialog
 import com.taipeiTravelGuide.view.dialog.MultipleLanguageDialog
 import com.taipeiTravelGuide.view.fragment.homePage.adapter.HomePageAdapter
 import com.taipeiTravelGuide.view.fragment.hotNewsPage.HotNewsFragment
+import com.taipeiTravelGuide.view.fragment.travelSpotPage.TravelSpotFragment
 import com.taipeiTravelGuide.viewModel.TaipeiTravelViewModel
 import java.util.Locale
 
@@ -82,8 +84,11 @@ class HomePageFragment : Fragment() {
                 }
 
                 /** 遊憩景點 卡片點擊*/
-                override fun onTravelSpotItemClick() {
-                    findNavController().navigate(R.id.action_HomePageFragment_to_TravelSpotFragment)
+                override fun onTravelSpotItemClick(pItemData: Attractions) {
+                    TravelSpotFragment.newBundle(pItemData)
+                    findNavController().navigate(
+                        R.id.action_HomePageFragment_to_TravelSpotFragment,
+                    )
                 }
             }
             mHomePageAdapter.setOnClickItf(iItfHomePageAdapterItemClick)

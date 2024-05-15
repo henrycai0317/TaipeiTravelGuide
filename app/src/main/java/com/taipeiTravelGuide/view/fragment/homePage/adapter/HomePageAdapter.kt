@@ -27,7 +27,7 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface ItfHomePageAdapterClick {
         fun onHotNewsItemClick(pWebViewUrl: String)  //點擊消息Card Item
-        fun onTravelSpotItemClick()  //遊憩景點Card Item
+        fun onTravelSpotItemClick(pItemData: Attractions)  //遊憩景點Card Item
     }
 
     private val FIRST_HOT_NEWS = 0
@@ -223,7 +223,7 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                         iAttractionsDataList.forEach { itemData ->
                             val iView = createItemView(itemData)
                             iView.setOnClickListener {
-                                mItfItfHomePageViewClick?.onTravelSpotItemClick()
+                                mItfItfHomePageViewClick?.onTravelSpotItemClick(itemData)
                             }
                             llTravelSpotContainer.addView(iView)
                         }
@@ -253,6 +253,7 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             defaultStatus()
             mBinding.icTravelSpotApiError.root.setViewVisible()
         }
+
         private fun showNoData() {
             defaultStatus()
             mBinding.icNoData.root.setViewVisible()

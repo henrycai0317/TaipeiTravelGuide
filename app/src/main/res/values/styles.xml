@@ -18,6 +18,8 @@
         <item name="colorButton">@color/cl26a889</item>
         <!--doggy foot print right-->
         <item name="colorFootPrintRight">@color/clFFA726</item>
+        <!--off type rotate doggy foot print right-->
+        <item name="colorFootPrintOffType">@color/cl999999</item>
 
         <!-- 其他屬性 -->
     </style>
@@ -39,6 +41,8 @@
         <item name="colorButton">@color/teal_700</item>
         <!--doggy foot print right-->
         <item name="colorFootPrintRight">@color/clC8A1F8</item>
+        <!--off type rotate doggy foot print right-->
+        <item name="colorFootPrintOffType">@color/white</item>
         <!-- 其他屬性 -->
     </style>
 

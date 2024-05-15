@@ -1,5 +1,6 @@
 package com.taipeiTravelGuide.model
 
+import java.io.Serializable
 
 data class Attractions(
     val address: String,
@@ -12,7 +13,7 @@ data class Attractions(
     val files: List<Any>,
     val friendly: List<Friendly>,
     val id: Int,
-    val images: List<Image>,
+    val images: ArrayList<Image>,
     val introduction: String,
     val links: List<Link>,
     val modified: String,
@@ -31,7 +32,7 @@ data class Attractions(
     val ticket: String,
     val url: String,
     val zipcode: String
-) {
+) : Serializable {
 
     data class Category(
         val id: Int,
@@ -47,7 +48,7 @@ data class Attractions(
         val ext: String,
         val src: String,
         val subject: String
-    )
+    ) : Serializable
 
     data class Link(
         val src: String,
