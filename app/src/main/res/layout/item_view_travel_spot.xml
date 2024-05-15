@@ -31,14 +31,16 @@
 
             <ImageView
                 android:id="@+id/ivTravelSpotImage"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:adjustViewBounds="true"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvTravelSpotTitle"
+                app:layout_constraintHorizontal_weight="0.3"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -54,8 +56,9 @@
                 android:textColor="?attr/colorTextPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toRightOf="@+id/ivTravelSpotImage"
-                app:layout_constraintRight_toLeftOf="@+id/arrowRight"
+                app:layout_constraintEnd_toStartOf="@+id/arrowRight"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/ivTravelSpotImage"
                 app:layout_constraintTop_toTopOf="@+id/ivTravelSpotImage"
                 tools:text="測試Titledfdsf測試Titledfdsf測試Titledfdsf測試Titledfdsf測試Titledfdsf測試Titledfdsf" />
 
@@ -72,6 +75,7 @@
                 android:textColor="?attr/colorTextPrimary"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintLeft_toRightOf="@+id/ivTravelSpotImage"
                 app:layout_constraintRight_toLeftOf="@+id/arrowRight"
                 app:layout_constraintTop_toBottomOf="@+id/tvTravelSpotTitle"
@@ -79,13 +83,16 @@
 
             <ImageView
                 android:id="@+id/arrowRight"
-                android:layout_width="35dp"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginRight="8dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/dog_foot_print_right"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="0.12"
+                app:layout_constraintStart_toEndOf="@+id/tvTravelSpotTitle"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
