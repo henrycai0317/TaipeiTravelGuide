@@ -8,4 +8,11 @@
     <!--  API Message  -->
     <string name="api_error_message">Sistem sibuk, silakan coba lagi nanti</string>
     <string name="api_no_data">Maaf! Saat ini tidak ada data yang tersedia</string>
+
+    <string name="tv_open_time">Jam Buka:</string>
+    <string name="tv_address">Alamat:</string>
+    <string name="tv_internet_address">Situs Web:</string>
+    <string name="tv_contract_phone">Nomor Telepon:</string>
+
+
 </resources>

@@ -8,4 +8,9 @@
     <!--  API Message  -->
     <string name="api_error_message">Hệ thống bận rộn, vui lòng thử lại sau</string>
     <string name="api_no_data">Xin lỗi! Hiện tại không có dữ liệu</string>
+
+    <string name="tv_open_time">Giờ mở cửa:</string>
+    <string name="tv_address">Địa chỉ:</string>
+    <string name="tv_internet_address">Trang web:</string>
+    <string name="tv_contract_phone">Số Điện Thoại Liên Hệ:</string>
 </resources>

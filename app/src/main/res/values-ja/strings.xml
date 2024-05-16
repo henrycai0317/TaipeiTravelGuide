@@ -9,4 +9,9 @@
     <string name="api_error_message">システムがビジーです。後でやり直してください</string>
     <string name="api_no_data">申し訳ありません！現在、データがありません</string>
 
+    <string name="tv_open_time">営業時間:</string>
+    <string name="tv_address">住所:</string>
+    <string name="tv_internet_address">ウェブサイト:</string>
+    <string name="tv_contract_phone">連絡先電話番号:</string>
+
 </resources>

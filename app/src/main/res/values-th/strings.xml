@@ -8,4 +8,9 @@
     <!--  API Message  -->
     <string name="api_error_message">ระบบไม่ว่าง โปรดลองอีกครั้งในภายหลัง</string>
     <string name="api_no_data">ขอโทษ! ขณะนี้ไม่มีข้อมูล</string>
+
+    <string name="tv_open_time">เวลาเปิดทำการ:</string>
+    <string name="tv_address">ที่อยู่:</string>
+    <string name="tv_internet_address">เว็บไซต์:</string>
+    <string name="tv_contract_phone">เบอร์โทรศัพท์ติดต่อ:</string>
 </resources>

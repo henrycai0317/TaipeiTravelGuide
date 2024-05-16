@@ -8,4 +8,9 @@
     <!--  API Message  -->
     <string name="api_error_message">Sistema ocupado, por favor inténtalo de nuevo más tarde</string>
     <string name="api_no_data">¡Lo siento! No hay datos disponibles en este momento</string>
+
+    <string name="tv_open_time">Horario de apertura:</string>
+    <string name="tv_address">Dirección:</string>
+    <string name="tv_internet_address">Sitio web:</string>
+    <string name="tv_contract_phone">Teléfono de contacto:</string>
 </resources>
