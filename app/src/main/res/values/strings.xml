@@ -5,6 +5,8 @@
     <string name="hot_news">最新消息</string>
     <string name="choose_language">選擇語言</string>
     <string name="tv_choose">選擇</string>
+    <string name="see_more_hot_news">看更多消息</string>
+    <string name="see_more_travel_spot">看更多景點</string>
 
     <!--  語言選擇  -->
     <string name="traditional_chinese">正體中文</string>

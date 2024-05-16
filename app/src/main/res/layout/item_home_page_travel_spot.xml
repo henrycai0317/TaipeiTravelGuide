@@ -19,6 +19,22 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tvSeeMoreTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="@string/see_more_travel_spot"
+        android:textColor="?attr/colorSeeMoreTitle"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:drawablePadding="4dp"
+        app:drawableEndCompat="@drawable/right_arrow"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/llTravelSpotContainer"
         android:layout_width="match_parent"

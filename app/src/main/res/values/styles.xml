@@ -11,7 +11,10 @@
         <item name="headerColor">@color/teal_700</item>
         <!--    Text 顏色    -->
         <item name="colorTextPrimary">@color/cl00201C</item>
+        <!--    List Title Text 顏色    -->
         <item name="colorTextContentTitle">@color/teal_700</item>
+        <!--  看更多 Text 顏色    -->
+        <item name="colorSeeMoreTitle">@color/cl4D90C1</item>
         <!--    card item顏色    -->
         <item name="cellCardColor">@color/white</item>
         <!--   Button顏色    -->
@@ -32,7 +35,10 @@
         <item name="headerColor">@color/cl004A47</item>
         <!--    Text 顏色    -->
         <item name="colorTextPrimary">@color/white</item>
+        <!--    List Title Text 顏色    -->
         <item name="colorTextContentTitle">@color/clFFA726</item>
+        <!--  看更多 Text 顏色    -->
+        <item name="colorSeeMoreTitle">@color/purple_200</item>
         <!--    背景    -->
         <item name="backgroundColor">@color/cl011329</item>
         <!--    card item顏色    -->

@@ -4,6 +4,8 @@
     <string name="hot_news">최신 뉴스</string>
     <string name="choose_language">언어 선택</string>
     <string name="tv_choose">선택</string>
+    <string name="see_more_hot_news">더 많은 뉴스 보기</string>
+    <string name="see_more_travel_spot">더 많은 관광 명소 보기</string>
 
     <!--  API Message  -->
     <string name="api_error_message">시스템이 바쁩니다. 나중에 다시 시도해주세요</string>

@@ -4,6 +4,8 @@
     <string name="hot_news">最新ニュース</string>
     <string name="choose_language">言語を選択</string>
     <string name="tv_choose">選択</string>
+    <string name="see_more_hot_news">もっと見るニュース</string>
+    <string name="see_more_travel_spot">もっと見る観光地</string>
 
     <!--  API Message  -->
     <string name="api_error_message">システムがビジーです。後でやり直してください</string>

@@ -4,6 +4,8 @@
     <string name="hot_news">Berita Terbaru</string>
     <string name="choose_language">Pilih Bahasa</string>
     <string name="tv_choose">Pilih</string>
+    <string name="see_more_hot_news">Lihat Lebih Banyak Berita</string>
+    <string name="see_more_travel_spot">Lihat Lebih Banyak Tempat Wisata</string>
 
     <!--  API Message  -->
     <string name="api_error_message">Sistem sibuk, silakan coba lagi nanti</string>

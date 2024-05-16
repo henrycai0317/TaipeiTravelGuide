@@ -8,4 +8,5 @@
     <attr name="colorTextContentTitle" format="reference|color" />
     <attr name="colorFootPrintRight" format="reference|color" />
     <attr name="colorFootPrintOffType" format="reference|color" />
+    <attr name="colorSeeMoreTitle" format="reference|color" />
 </resources>
