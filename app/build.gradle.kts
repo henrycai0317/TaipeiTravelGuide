@@ -59,4 +59,6 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
     //lottie 動畫
     implementation ("com.airbnb.android:lottie:5.2.0")
+    //Paging 3
+    implementation ("androidx.paging:paging-runtime-ktx:3.3.0")
 }

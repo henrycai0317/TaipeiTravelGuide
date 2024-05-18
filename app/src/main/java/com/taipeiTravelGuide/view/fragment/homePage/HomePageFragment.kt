@@ -90,6 +90,18 @@ class HomePageFragment : Fragment() {
                         R.id.action_HomePageFragment_to_TravelSpotFragment,
                     )
                 }
+
+                override fun onSeeMoreHotNews() {
+                    findNavController().navigate(
+                        R.id.action_HomePageFragment_to_seeMoreHotNewsFragment,
+                    )
+                }
+
+                override fun onSeeMoreTravelSpot() {
+                    findNavController().navigate(
+                        R.id.action_HomePageFragment_to_seeMoreTravelSpotFragment,
+                    )
+                }
             }
             mHomePageAdapter.setOnClickItf(iItfHomePageAdapterItemClick)
 

@@ -38,4 +38,30 @@ class TravelService {
         return travelApi.getEventsREQ(lang, begin, end, page)
     }
 
+    /**
+     * Pager Events 專用
+     * 活動資訊
+     * */
+    suspend fun callEventsPager(
+        lang: String,
+        begin: String? = null,
+        end: String? = null,
+        page: Int? = null
+    ): EventsResponse {
+        return travelApi.getEventsPager(lang, begin, end, page)
+    }
+
+
+    /**
+     * Pager Events 專用
+     * 活動資訊
+     * */
+    suspend fun callAttractionsPager(
+        lang: String,
+        categoryIds: String? = null,
+        page: Int? = null
+    ): AttractionsResponse {
+        return travelApi.getAttractionsPager(lang, categoryIds, page)
+    }
+
 }

@@ -15,6 +15,12 @@
         <action
             android:id="@+id/action_HomePageFragment_to_TravelSpotFragment"
             app:destination="@id/TravelSpotFragment" />
+        <action
+            android:id="@+id/action_HomePageFragment_to_seeMoreHotNewsFragment"
+            app:destination="@id/seeMoreHotNewsFragment" />
+        <action
+            android:id="@+id/action_HomePageFragment_to_seeMoreTravelSpotFragment"
+            app:destination="@id/seeMoreTravelSpotFragment" />
     </fragment>
     <fragment
         android:id="@+id/HotNewsFragment"
@@ -32,4 +38,24 @@
         android:id="@+id/travelSpotWebViewFragment"
         android:name="com.taipeiTravelGuide.view.fragment.travelSpotPage.TravelSpotWebViewFragment"
         android:label="TravelSpotWebViewFragment" />
+
+
+    <fragment
+        android:id="@+id/seeMoreHotNewsFragment"
+        android:name="com.taipeiTravelGuide.view.fragment.hotNewsPage.SeeMoreHotNewsFragment"
+        android:label="SeeMoreHotNewsFragment">
+        <action
+            android:id="@+id/action_seeMoreHotNewsFragment_to_HotNewsFragment"
+            app:destination="@id/HotNewsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/seeMoreTravelSpotFragment"
+        android:name="com.taipeiTravelGuide.view.fragment.travelSpotPage.SeeMoreTravelSpotFragment"
+        android:label="SeeMoreTravelSpotFragment">
+        <action
+            android:id="@+id/action_seeMoreTravelSpotFragment_to_TravelSpotFragment"
+            app:destination="@id/TravelSpotFragment" />
+    </fragment>
+
 </navigation>

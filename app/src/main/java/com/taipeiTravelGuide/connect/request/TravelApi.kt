@@ -57,4 +57,22 @@ interface TravelApi {
         @Query("end") end: String? = null,
         @Query("page") page: Int? = null
     ): Call<EventsResponse>
+
+
+    @Headers("Accept:application/json") // 添加 Accept 標頭
+    @GET("/open-api/{lang}/Events/News")
+    suspend fun getEventsPager(
+        @Path("lang") lang: String,
+        @Query("begin") begin: String? = null,
+        @Query("end") end: String? = null,
+        @Query("page") page: Int? = null
+    ): EventsResponse
+
+    @Headers("Accept:application/json") // 添加 Accept 標頭
+    @GET("/open-api/{lang}/Attractions/All")
+    suspend fun getAttractionsPager(
+        @Path("lang") lang: String,
+        @Query("categoryIds") categoryIds: String? = null,
+        @Query("page") page: Int? = null
+    ): AttractionsResponse
 }

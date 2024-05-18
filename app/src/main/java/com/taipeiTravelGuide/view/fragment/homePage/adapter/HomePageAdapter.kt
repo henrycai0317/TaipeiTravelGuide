@@ -28,6 +28,9 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     interface ItfHomePageAdapterClick {
         fun onHotNewsItemClick(pWebViewUrl: String)  //點擊消息Card Item
         fun onTravelSpotItemClick(pItemData: Attractions)  //遊憩景點Card Item
+
+        fun onSeeMoreHotNews()
+        fun onSeeMoreTravelSpot()
     }
 
     private val FIRST_HOT_NEWS = 0
@@ -112,6 +115,13 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
      */
     inner class ItemHotNewsView(private val mBinding: ItemHomePageHotNewsBinding) :
         RecyclerView.ViewHolder(mBinding.root) {
+
+        init {
+            mBinding.tvSeeMoreHotNewsTitle.setOnClickListener {
+                mItfItfHomePageViewClick?.onSeeMoreHotNews()
+            }
+        }
+
         @Synchronized
         fun checkingApi(pResEvents: Response<EventsResponse>?) {
             if (pResEvents != null) {
@@ -191,6 +201,12 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
      */
     inner class ItemTravelSpotView(private val mBinding: ItemHomePageTravelSpotBinding) :
         RecyclerView.ViewHolder(mBinding.root) {
+
+        init {
+            mBinding.tvSeeMoreTravelSpotTitle.setOnClickListener {
+                mItfItfHomePageViewClick?.onSeeMoreTravelSpot()
+            }
+        }
 
         @Synchronized
         fun checkingApi(pResAttractions: Response<AttractionsResponse>?) {
