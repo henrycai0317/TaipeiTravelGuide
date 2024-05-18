@@ -138,6 +138,7 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private fun setData(pResEvents: Response<EventsResponse>) {
             defaultStatus()
             mBinding.apply {
+                tvSeeMoreHotNewsTitle.setViewVisible()
                 llHotNewsContainer.setViewVisible()
                 llHotNewsContainer.removeAllViews()
                 pResEvents.body()?.data?.let { iData ->
@@ -188,6 +189,7 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         private fun defaultStatus() {
             mBinding.apply {
+                tvSeeMoreHotNewsTitle.setViewGone()
                 icHotNewsShimmer.root.setViewGone()
                 icHotNewsApiError.root.setViewGone()
                 icNoData.root.setViewGone()
@@ -225,6 +227,7 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private fun setData(pResAttractions: Response<AttractionsResponse>) {
             defaultStatus()
             mBinding.apply {
+                tvSeeMoreTravelSpotTitle.setViewVisible()
                 llTravelSpotContainer.setViewVisible()
                 llTravelSpotContainer.removeAllViews()
                 pResAttractions.body()?.data?.let { iData ->
@@ -285,6 +288,7 @@ class HomePageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 icTravelSpotShimmer.root.setViewGone()
                 icNoData.root.setViewGone()
                 llTravelSpotContainer.setViewGone()
+                tvSeeMoreTravelSpotTitle.setViewGone()
             }
         }
     }
