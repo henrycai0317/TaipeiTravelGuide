@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taipeiTravelGuide.Injection
+import com.taipeiTravelGuide.StringUtils.checkString
 import com.taipeiTravelGuide.databinding.FragmentSeeMoreHotNewsBinding
 import com.taipeiTravelGuide.view.fragment.hotNewsPage.adapter.SeeMoreHotNewsAdapter
 import com.taipeiTravelGuide.view.fragment.common.SeeMoreLoadStateAdapter
@@ -21,6 +22,17 @@ import kotlinx.coroutines.launch
  *  看更多最新消息
  * */
 class SeeMoreHotNewsFragment : Fragment() {
+
+    companion object {
+        private const val EXTRA_SEE_MORE_HOT_NEWS_LANGUAGE_TYPE =
+            "EXTRA_SEE_MORE_HOT_NEWS_LANGUAGE_TYPE"
+
+        fun newBundle(pType: String) = Bundle().apply {
+            putString(EXTRA_SEE_MORE_HOT_NEWS_LANGUAGE_TYPE, pType)
+        }
+    }
+
+    private var mLanguageType: String? = null
     private var mBinding: FragmentSeeMoreHotNewsBinding? = null
     private val mViewModel: SeeMoreEventViewModel by lazy {
         ViewModelProvider(
@@ -36,6 +48,7 @@ class SeeMoreHotNewsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mLanguageType = arguments?.getString(EXTRA_SEE_MORE_HOT_NEWS_LANGUAGE_TYPE).checkString()
     }
 
     override fun onCreateView(
@@ -70,7 +83,7 @@ class SeeMoreHotNewsFragment : Fragment() {
                     footer = SeeMoreLoadStateAdapter { mAdapter.retry() }
                 )
                 lifecycleScope.launch {
-                    mViewModel.getEvents("zh-tw").collectLatest { pagingData ->
+                    mViewModel.getEvents(mLanguageType ?: "zh-tw").collectLatest { pagingData ->
                         mAdapter.submitData(pagingData)
                     }
                 }

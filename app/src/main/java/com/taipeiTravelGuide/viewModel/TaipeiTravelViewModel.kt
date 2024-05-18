@@ -37,6 +37,10 @@ class TaipeiTravelViewModel : ViewModel() {
     val isChangeDarkMode: LiveData<Boolean> get() = _isChangeDarkMode //Dark Mode
 
     private val _multipleLanguageSelectedId = MutableLiveData<Int>() //多國語言RadioGroup
+
+    var mMultipleLanguageSelectedTypeStr = "zh-tw"  //多國語言 type
+
+
     val multipleLanguageSelectedId: LiveData<Int>  //多國語言RadioGroup
         get() = _multipleLanguageSelectedId
 

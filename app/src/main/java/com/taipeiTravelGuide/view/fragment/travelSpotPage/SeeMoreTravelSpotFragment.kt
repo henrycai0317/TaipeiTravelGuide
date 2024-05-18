@@ -10,11 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taipeiTravelGuide.Injection
+import com.taipeiTravelGuide.StringUtils.checkString
 import com.taipeiTravelGuide.databinding.FragmentSeeMoreTravelSpotBinding
 import com.taipeiTravelGuide.view.fragment.common.SeeMoreLoadStateAdapter
-import com.taipeiTravelGuide.view.fragment.hotNewsPage.adapter.SeeMoreHotNewsAdapter
 import com.taipeiTravelGuide.view.fragment.travelSpotPage.adapter.SeeMoreTravelSpotAdapter
-import com.taipeiTravelGuide.viewModel.SeeMoreEventViewModel
 import com.taipeiTravelGuide.viewModel.SeeMoreTravelSpotViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -23,6 +22,17 @@ import kotlinx.coroutines.launch
  * 看更多 遊憩景點
  * */
 class SeeMoreTravelSpotFragment : Fragment() {
+
+    companion object {
+        private const val EXTRA_SEE_MORE_TRAVEL_SPOT_LANGUAGE_TYPE =
+            "EXTRA_SEE_MORE_TRAVEL_SPOT_LANGUAGE_TYPE"
+
+        fun newBundle(pType: String) = Bundle().apply {
+            putString(EXTRA_SEE_MORE_TRAVEL_SPOT_LANGUAGE_TYPE, pType)
+        }
+    }
+
+    private var mLanguageType: String? = null
     private var mBinding: FragmentSeeMoreTravelSpotBinding? = null
 
     private val mViewModel: SeeMoreTravelSpotViewModel by lazy {
@@ -38,6 +48,7 @@ class SeeMoreTravelSpotFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mLanguageType = arguments?.getString(EXTRA_SEE_MORE_TRAVEL_SPOT_LANGUAGE_TYPE).checkString()
     }
 
     override fun onCreateView(
@@ -72,9 +83,10 @@ class SeeMoreTravelSpotFragment : Fragment() {
                     footer = SeeMoreLoadStateAdapter { mAdapter.retry() }
                 )
                 lifecycleScope.launch {
-                    mViewModel.getAttractions("zh-tw").collectLatest { pagingData ->
-                        mAdapter.submitData(pagingData)
-                    }
+                    mViewModel.getAttractions(mLanguageType ?: "zh-tw")
+                        .collectLatest { pagingData ->
+                            mAdapter.submitData(pagingData)
+                        }
                 }
             }
 

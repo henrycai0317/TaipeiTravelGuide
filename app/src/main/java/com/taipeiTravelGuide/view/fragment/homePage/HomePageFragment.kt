@@ -18,6 +18,8 @@ import com.taipeiTravelGuide.view.dialog.BaseDialog
 import com.taipeiTravelGuide.view.dialog.MultipleLanguageDialog
 import com.taipeiTravelGuide.view.fragment.homePage.adapter.HomePageAdapter
 import com.taipeiTravelGuide.view.fragment.hotNewsPage.HotNewsFragment
+import com.taipeiTravelGuide.view.fragment.hotNewsPage.SeeMoreHotNewsFragment
+import com.taipeiTravelGuide.view.fragment.travelSpotPage.SeeMoreTravelSpotFragment
 import com.taipeiTravelGuide.view.fragment.travelSpotPage.TravelSpotFragment
 import com.taipeiTravelGuide.viewModel.TaipeiTravelViewModel
 import java.util.Locale
@@ -94,12 +96,14 @@ class HomePageFragment : Fragment() {
                 override fun onSeeMoreHotNews() {
                     findNavController().navigate(
                         R.id.action_HomePageFragment_to_seeMoreHotNewsFragment,
+                        SeeMoreHotNewsFragment.newBundle(mViewModel.mMultipleLanguageSelectedTypeStr)
                     )
                 }
 
                 override fun onSeeMoreTravelSpot() {
                     findNavController().navigate(
                         R.id.action_HomePageFragment_to_seeMoreTravelSpotFragment,
+                        SeeMoreTravelSpotFragment.newBundle(mViewModel.mMultipleLanguageSelectedTypeStr)
                     )
                 }
             }
@@ -124,6 +128,7 @@ class HomePageFragment : Fragment() {
                                         }
                                         //回傳ViewModel Selected Id
                                         mViewModel.setMultipleLanguageSelectedId(pSelectedId)
+                                        mViewModel.mMultipleLanguageSelectedTypeStr = pLanguageType
                                     }
                                 }
                             })
@@ -152,6 +157,7 @@ class HomePageFragment : Fragment() {
         Locale.setDefault(locale)
         val configuration = Configuration()
         configuration.setLocale(locale)
+        @Suppress("DEPRECATION")
         context.resources.updateConfiguration(configuration, context.resources.displayMetrics)
     }
 
