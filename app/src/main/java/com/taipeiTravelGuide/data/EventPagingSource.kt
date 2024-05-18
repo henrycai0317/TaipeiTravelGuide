@@ -4,16 +4,16 @@ import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.taipeiTravelGuide.connect.TravelService
-import com.taipeiTravelGuide.connect.request.TravelApi
 import com.taipeiTravelGuide.data.TravelRepository.Companion.NETWORK_PAGE_SIZE
 import com.taipeiTravelGuide.model.EventsData
 
-private const val EVENTS_STARTING_PAGE_INDEX = 1
 
 /**
  *  建立 PagingSource
  *  處理分頁載邏輯
  * */
+
+private const val EVENTS_STARTING_PAGE_INDEX = 1
 
 class EventPagingSource(
     private val travelService: TravelService,
@@ -23,15 +23,15 @@ class EventPagingSource(
 ) : PagingSource<Int, EventsData>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, EventsData> {
-        val page = params.key ?: 1
+        val position = params.key ?: EVENTS_STARTING_PAGE_INDEX
         return try {
-            val response = travelService.callEventsPager(lang, begin, end, page)
+            val response = travelService.callEventsPager(lang, begin, end, position)
             val events = response.data
-            val prevKey = if (page == 1) null else page - 1
-            val nextKey = if (events.isNotEmpty()) page + 1 else null
+            val prevKey = if (position == EVENTS_STARTING_PAGE_INDEX) null else position - 1
+            val nextKey = if (events.isNotEmpty()) position + 1 else null
             Log.d(
                 "EventPagingSource",
-                "page: $page, params.loadSize: ${params.loadSize} ,NETWORK_PAGE_SIZE: ${NETWORK_PAGE_SIZE}, nextKey: $nextKey"
+                "page: $position, params.loadSize: ${params.loadSize} ,NETWORK_PAGE_SIZE: ${NETWORK_PAGE_SIZE}, nextKey: $nextKey"
             )
             LoadResult.Page(
                 data = events,

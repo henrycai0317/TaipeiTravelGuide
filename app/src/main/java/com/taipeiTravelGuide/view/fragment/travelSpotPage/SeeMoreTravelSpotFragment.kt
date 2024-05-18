@@ -4,14 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taipeiTravelGuide.Injection
+import com.taipeiTravelGuide.R
+import com.taipeiTravelGuide.RecyclerViewLayoutManagerUtils.setLinearLayoutManager
 import com.taipeiTravelGuide.StringUtils.checkString
+import com.taipeiTravelGuide.ViewUtils.setViewVisibleOrGone
 import com.taipeiTravelGuide.databinding.FragmentSeeMoreTravelSpotBinding
+import com.taipeiTravelGuide.model.Attractions
+import com.taipeiTravelGuide.view.dialog.ProcessDialog
 import com.taipeiTravelGuide.view.fragment.common.SeeMoreLoadStateAdapter
 import com.taipeiTravelGuide.view.fragment.travelSpotPage.adapter.SeeMoreTravelSpotAdapter
 import com.taipeiTravelGuide.viewModel.SeeMoreTravelSpotViewModel
@@ -32,9 +39,9 @@ class SeeMoreTravelSpotFragment : Fragment() {
         }
     }
 
+    private var mProcessDialog: ProcessDialog? = null //Loading Dialog
     private var mLanguageType: String? = null
     private var mBinding: FragmentSeeMoreTravelSpotBinding? = null
-
     private val mViewModel: SeeMoreTravelSpotViewModel by lazy {
         ViewModelProvider(
             this@SeeMoreTravelSpotFragment,
@@ -71,17 +78,32 @@ class SeeMoreTravelSpotFragment : Fragment() {
             ivBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+
+            val iItfTravelSpotItemClick = object : SeeMoreTravelSpotAdapter.ItfTravelSpotItemClick {
+                override fun onTravelSpotItemClick(pItemData: Attractions) {
+                    TravelSpotFragment.newBundle(pItemData)
+                    findNavController().navigate(
+                        R.id.action_seeMoreTravelSpotFragment_to_TravelSpotFragment,
+                    )
+                }
+            }
+            mAdapter.setOnClickItf(iItfTravelSpotItemClick)
+
+            btRetry.setOnClickListener {
+                mAdapter.retry()
+            }
         }
     }
 
     private fun initViews() {
         mBinding?.apply {
             activity?.let { iAct ->
-                rvList.layoutManager = LinearLayoutManager(iAct)
+                rvList.setLinearLayoutManager(iAct)
                 rvList.adapter = mAdapter.withLoadStateHeaderAndFooter(
                     header = SeeMoreLoadStateAdapter { mAdapter.retry() },
                     footer = SeeMoreLoadStateAdapter { mAdapter.retry() }
                 )
+
                 lifecycleScope.launch {
                     mViewModel.getAttractions(mLanguageType ?: "zh-tw")
                         .collectLatest { pagingData ->
@@ -90,14 +112,59 @@ class SeeMoreTravelSpotFragment : Fragment() {
                 }
             }
 
-//            mAdapter.addLoadStateListener { loadState ->
-//                // Show initial loading state
-//                SeeMoreLoadStateAdapter { mAdapter.retry() }
-//                // Show or hide your initial loading view here
-//                // initialLoadingView.isVisible = isLoading
-//            }
+            /** Pager 頁面初始狀態判斷*/
+            lifecycleScope.launch {
+                mAdapter.loadStateFlow.collect { loadState ->
+                    val isListEmpty =
+                        loadState.refresh is LoadState.NotLoading && mAdapter.itemCount == 0
+
+                    isTimeToShowProgressDialog(loadState.source.refresh is LoadState.Loading)
+                    rvList.setViewVisibleOrGone(!isListEmpty)
+                    btRetry.setViewVisibleOrGone(loadState.source.refresh is LoadState.Error)
+
+                    val errorState = loadState.source.append as? LoadState.Error
+                        ?: loadState.source.prepend as? LoadState.Error
+                        ?: loadState.append as? LoadState.Error
+                        ?: loadState.prepend as? LoadState.Error
+
+                    errorState?.let {
+                        activity?.let { iAct ->
+                            Toast.makeText(
+                                iAct,
+                                "\uD83D\uDE28 Wooops ${it.error}",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                }
+            }
+
         }
     }
 
+    private fun isTimeToShowProgressDialog(pShow: Boolean) {
+        mBinding?.icSeeMoreShimmer?.root?.setViewVisibleOrGone(pShow)
+        if (pShow) {
+            showProgressDialog()
+        } else {
+            cancelProgressDialog()
+        }
+    }
+
+    private fun showProgressDialog() {
+        val iProcessDialog = mProcessDialog
+        val iActivity = activity
+        if (iProcessDialog == null && iActivity != null) {
+            val iiProcessDialog = ProcessDialog(iActivity)
+            iiProcessDialog.setCancelable(false)
+            iiProcessDialog.show()
+            mProcessDialog = iiProcessDialog
+        }
+    }
+
+    private fun cancelProgressDialog() {
+        mProcessDialog?.cancel()
+        mProcessDialog = null
+    }
 
 }

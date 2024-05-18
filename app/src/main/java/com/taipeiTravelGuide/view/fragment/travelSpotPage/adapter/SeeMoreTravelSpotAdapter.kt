@@ -11,7 +11,21 @@ import com.taipeiTravelGuide.databinding.ItemViewTravelSpotBinding
 import com.taipeiTravelGuide.model.Attractions
 
 class SeeMoreTravelSpotAdapter :
-    PagingDataAdapter<Attractions, SeeMoreTravelSpotViewHolder>(ATTRACTIONS_COMPARATOR) {
+    PagingDataAdapter<Attractions, SeeMoreTravelSpotAdapter.SeeMoreTravelSpotViewHolder>(
+        ATTRACTIONS_COMPARATOR
+    ) {
+
+    interface ItfTravelSpotItemClick {
+        fun onTravelSpotItemClick(pItemData: Attractions)  //點擊景點Card Item
+    }
+
+
+    private var mItfTravelSpotItemClickCallBack: ItfTravelSpotItemClick? = null
+
+    fun setOnClickItf(pItfTravelSpotClick: ItfTravelSpotItemClick) {
+        mItfTravelSpotItemClickCallBack = pItfTravelSpotClick
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeeMoreTravelSpotViewHolder {
         val binding =
             ItemViewTravelSpotBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -34,22 +48,35 @@ class SeeMoreTravelSpotAdapter :
                 oldItem == newItem
         }
     }
-}
 
-class SeeMoreTravelSpotViewHolder(private val binding: ItemViewTravelSpotBinding) :
-    RecyclerView.ViewHolder(binding.root) {
-    fun bind(pItemData: Attractions) {
-        binding.apply {
-            tvTravelSpotTitle.text = pItemData.name.checkString()
-            tvTravelSpotContent.text = pItemData.introduction.checkString()
-            val iListImages = pItemData.images
-            if (iListImages.isNotEmpty()) {
-                val iMageUrl = iListImages[0].src.checkString()
-                Glide.with(ivTravelSpotImage.context)
-                    .load(iMageUrl)
-                    .into(ivTravelSpotImage)
+    inner class SeeMoreTravelSpotViewHolder(private val binding: ItemViewTravelSpotBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        private var mAttractionsItemData: Attractions? = null
+
+        init {
+            binding.root.setOnClickListener {
+                mAttractionsItemData?.let { iAttractionsData ->
+                    mItfTravelSpotItemClickCallBack?.onTravelSpotItemClick(iAttractionsData)
+                }
             }
+        }
+
+        fun bind(pItemData: Attractions) {
+            mAttractionsItemData = pItemData
+            binding.apply {
+                tvTravelSpotTitle.text = pItemData.name.checkString()
+                tvTravelSpotContent.text = pItemData.introduction.checkString()
+                val iListImages = pItemData.images
+                if (iListImages.isNotEmpty()) {
+                    val iMageUrl = iListImages[0].src.checkString()
+                    Glide.with(ivTravelSpotImage.context)
+                        .load(iMageUrl)
+                        .into(ivTravelSpotImage)
+                }
+            }
+
         }
 
     }
 }
+

@@ -2,10 +2,10 @@ package com.taipeiTravelGuide.view.fragment.common
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.taipeiTravelGuide.ViewUtils.setViewVisibleOrGone
 import com.taipeiTravelGuide.databinding.ItemViewLoadStateFooterViewItemBinding
 
 class SeeMoreLoadStateAdapter(
@@ -40,12 +40,14 @@ class SeeMoreLoadStateViewHolder(
     }
 
     fun bind(loadState: LoadState) {
-        if (loadState is LoadState.Error) {
-            binding.errorMsg.text = loadState.error.localizedMessage
+        binding.apply {
+            if (loadState is LoadState.Error) {
+                errorMsg.text = loadState.error.localizedMessage
+            }
+            progressBar.setViewVisibleOrGone(loadState is LoadState.Loading)
+            retryButton.setViewVisibleOrGone(loadState is LoadState.Error)
+            errorMsg.setViewVisibleOrGone(loadState is LoadState.Error)
         }
-        binding.progressBar.isVisible = loadState is LoadState.Loading
-        binding.retryButton.isVisible = loadState is LoadState.Error
-        binding.errorMsg.isVisible = loadState is LoadState.Error
     }
 
 }

@@ -1,5 +1,6 @@
 package com.taipeiTravelGuide.connect
 
+import android.util.Log
 import com.taipeiTravelGuide.connect.request.TravelApi
 import com.taipeiTravelGuide.connect.response.AttractionsResponse
 import com.taipeiTravelGuide.connect.response.EventsResponse
@@ -48,6 +49,7 @@ class TravelService {
         end: String? = null,
         page: Int? = null
     ): EventsResponse {
+        Log.d("EventPagingSource", "callEventsPager: page $page")
         return travelApi.getEventsPager(lang, begin, end, page)
     }
 
@@ -61,6 +63,7 @@ class TravelService {
         categoryIds: String? = null,
         page: Int? = null
     ): AttractionsResponse {
+        Log.d("AttractionsPagingSource", "callAttractionsPager: page $page")
         return travelApi.getAttractionsPager(lang, categoryIds, page)
     }
 
