@@ -9,7 +9,19 @@ import com.taipeiTravelGuide.databinding.ItemViewHotNewsBinding
 import com.taipeiTravelGuide.model.EventsData
 
 class SeeMoreHotNewsAdapter :
-    PagingDataAdapter<EventsData, SeeMoreEventViewHolder>(EVENT_COMPARATOR) {
+    PagingDataAdapter<EventsData, SeeMoreHotNewsAdapter.SeeMoreEventViewHolder>(EVENT_COMPARATOR) {
+
+    interface ItfHotNewsItemClick {
+        fun onHotNewsItemClick(pWebViewUrl: String)  //點擊消息Card Item
+    }
+
+
+    private var mItfHotNewsItemClickCallBack: ItfHotNewsItemClick? = null
+
+    fun setOnClickItf(pItHotNewsClick: ItfHotNewsItemClick) {
+        mItfHotNewsItemClickCallBack = pItHotNewsClick
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeeMoreEventViewHolder {
         val binding =
             ItemViewHotNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -32,14 +44,26 @@ class SeeMoreHotNewsAdapter :
                 oldItem == newItem
         }
     }
-}
 
-class SeeMoreEventViewHolder(private val binding: ItemViewHotNewsBinding) :
-    RecyclerView.ViewHolder(binding.root) {
-    fun bind(pEventData: EventsData) {
-        binding.apply {
-            tvHotNewsTitle.text = pEventData.title
-            tvHotNewsContent.text = pEventData.description
+    inner class SeeMoreEventViewHolder(private val binding: ItemViewHotNewsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        private var mEventItemData: EventsData? = null
+
+        init {
+            binding.root.setOnClickListener {
+                mEventItemData?.url?.let { iUrl ->
+                    mItfHotNewsItemClickCallBack?.onHotNewsItemClick(iUrl)
+                }
+            }
+        }
+
+        fun bind(pEventData: EventsData) {
+            mEventItemData = pEventData
+            binding.apply {
+                tvHotNewsTitle.text = pEventData.title
+                tvHotNewsContent.text = pEventData.description
+            }
         }
     }
 }
+

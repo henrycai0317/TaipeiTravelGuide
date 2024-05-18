@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taipeiTravelGuide.Injection
+import com.taipeiTravelGuide.R
 import com.taipeiTravelGuide.StringUtils.checkString
 import com.taipeiTravelGuide.databinding.FragmentSeeMoreHotNewsBinding
 import com.taipeiTravelGuide.view.fragment.hotNewsPage.adapter.SeeMoreHotNewsAdapter
@@ -71,6 +72,16 @@ class SeeMoreHotNewsFragment : Fragment() {
             ivBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+
+            val iItfHotNewsItemClick = object :SeeMoreHotNewsAdapter.ItfHotNewsItemClick{
+                override fun onHotNewsItemClick(pWebViewUrl: String) {
+                    findNavController().navigate(
+                        R.id.action_seeMoreHotNewsFragment_to_HotNewsFragment,
+                        HotNewsFragment.newBundle(pWebViewUrl)
+                    )
+                }
+            }
+            mAdapter.setOnClickItf(iItfHotNewsItemClick)
         }
     }
 
