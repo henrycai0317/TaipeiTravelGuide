@@ -6,6 +6,8 @@
     <string name="tv_choose">選択</string>
     <string name="see_more_hot_news">もっと見るニュース</string>
     <string name="see_more_travel_spot">もっと見る観光地</string>
+    <string name="retry">再試行</string>
+    <string name="close">閉じる</string>
 
     <!--  API Message  -->
     <string name="api_error_message">システムがビジーです。後でやり直してください</string>

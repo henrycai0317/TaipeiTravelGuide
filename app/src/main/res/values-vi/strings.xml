@@ -6,6 +6,8 @@
     <string name="tv_choose">Chọn</string>
     <string name="see_more_hot_news">Xem Thêm Tin Tức</string>
     <string name="see_more_travel_spot">Xem Thêm Điểm Du Lịch</string>
+    <string name="retry">Thử lại</string>
+    <string name="close">Đóng</string>
 
     <!--  API Message  -->
     <string name="api_error_message">Hệ thống bận rộn, vui lòng thử lại sau</string>

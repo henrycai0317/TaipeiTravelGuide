@@ -6,6 +6,8 @@
     <string name="tv_choose">选择</string>
     <string name="see_more_hot_news">查看更多消息</string>
     <string name="see_more_travel_spot">查看更多景點</string>
+    <string name="retry">重试</string>
+    <string name="close">关闭</string>
 
     <!--  API Message  -->
     <string name="api_error_message">系統忙碌中，請稍後再試</string>

@@ -6,6 +6,8 @@
     <string name="tv_choose">Elegir</string>
     <string name="see_more_hot_news">Ver más noticias</string>
     <string name="see_more_travel_spot">Ver más lugares de interés</string>
+    <string name="retry">Reintentar</string>
+    <string name="close">Cerrar</string>
 
     <!--  API Message  -->
     <string name="api_error_message">Sistema ocupado, por favor inténtalo de nuevo más tarde</string>

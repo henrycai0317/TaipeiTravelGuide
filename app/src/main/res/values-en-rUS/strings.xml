@@ -6,7 +6,8 @@
     <string name="tv_choose">Choose</string>
     <string name="see_more_hot_news">See More News</string>
     <string name="see_more_travel_spot">See More Travel Spots</string>
-
+    <string name="retry">Retry</string>
+    <string name="close">Close</string>
     <!--  API Message  -->
     <string name="api_error_message">System busy, please try again later</string>
     <string name="api_no_data">Sorry! No data available at the moment</string>

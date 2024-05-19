@@ -6,6 +6,8 @@
     <string name="tv_choose">เลือก</string>
     <string name="see_more_hot_news">ดูข่าวเพิ่มเติม</string>
     <string name="see_more_travel_spot">ดูสถานที่ท่องเที่ยวเพิ่มเติม</string>
+    <string name="retry">ลองใหม่</string>
+    <string name="close">ปิด</string>
 
     <!--  API Message  -->
     <string name="api_error_message">ระบบไม่ว่าง โปรดลองอีกครั้งในภายหลัง</string>
