@@ -6,7 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.taipeiTravelGuide.StringUtils.checkString
+import com.taipeiTravelGuide.utils.StringUtils.checkString
 import com.taipeiTravelGuide.databinding.ItemViewTravelSpotBinding
 import com.taipeiTravelGuide.model.Attractions
 

@@ -1,4 +1,4 @@
-package com.taipeiTravelGuide
+package com.taipeiTravelGuide.utils
 
 import android.annotation.SuppressLint
 import android.app.Activity

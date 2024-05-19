@@ -1,7 +1,6 @@
 package com.taipeiTravelGuide.view.fragment.travelSpotPage
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.taipeiTravelGuide.ClassTrans
-import com.taipeiTravelGuide.EAppUtil
-import com.taipeiTravelGuide.EAppUtil.serializable
+import com.taipeiTravelGuide.utils.ClassTrans
+import com.taipeiTravelGuide.utils.EAppUtil
 import com.taipeiTravelGuide.R
-import com.taipeiTravelGuide.StringUtils.checkString
-import com.taipeiTravelGuide.ViewUtils.setViewGone
-import com.taipeiTravelGuide.ViewUtils.setViewVisible
-import com.taipeiTravelGuide.ViewUtils.setViewVisibleOrGone
+import com.taipeiTravelGuide.utils.StringUtils.checkString
+import com.taipeiTravelGuide.utils.ViewUtils.setViewVisibleOrGone
 import com.taipeiTravelGuide.databinding.FragmentTravelSpotBinding
 import com.taipeiTravelGuide.model.Attractions
 import com.taipeiTravelGuide.view.customView.rotateBanner.ImageViewRotateBanner

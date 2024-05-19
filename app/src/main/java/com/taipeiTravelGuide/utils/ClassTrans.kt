@@ -1,4 +1,4 @@
-package com.taipeiTravelGuide
+package com.taipeiTravelGuide.utils
 
 
 /**

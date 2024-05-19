@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.taipeiTravelGuide.ViewUtils.setViewVisibleOrGone
+import com.taipeiTravelGuide.utils.ViewUtils.setViewVisibleOrGone
 import com.taipeiTravelGuide.databinding.ItemViewLoadStateFooterViewItemBinding
 
 class SeeMoreLoadStateAdapter(

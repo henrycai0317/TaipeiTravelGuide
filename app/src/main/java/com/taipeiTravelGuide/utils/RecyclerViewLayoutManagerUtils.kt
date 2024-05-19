@@ -1,4 +1,4 @@
-package com.taipeiTravelGuide
+package com.taipeiTravelGuide.utils
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager

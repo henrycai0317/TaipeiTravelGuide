@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
-import com.taipeiTravelGuide.EAppUtil
+import com.taipeiTravelGuide.utils.EAppUtil
 import com.taipeiTravelGuide.R
 import com.taipeiTravelGuide.databinding.ViewImageRotateBannerBinding
 import com.taipeiTravelGuide.model.Attractions

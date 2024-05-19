@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.taipeiTravelGuide.R
-import com.taipeiTravelGuide.RecyclerViewLayoutManagerUtils.setLinearLayoutManager
+import com.taipeiTravelGuide.utils.RecyclerViewLayoutManagerUtils.setLinearLayoutManager
 import com.taipeiTravelGuide.databinding.FragmentHomePageBinding
 import com.taipeiTravelGuide.model.Attractions
 import com.taipeiTravelGuide.view.TaipeiTravelApplication

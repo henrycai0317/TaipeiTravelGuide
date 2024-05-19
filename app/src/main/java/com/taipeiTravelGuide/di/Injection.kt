@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.taipeiTravelGuide
+package com.taipeiTravelGuide.di
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.savedstate.SavedStateRegistryOwner
 import com.taipeiTravelGuide.connect.TravelService
 import com.taipeiTravelGuide.data.TravelRepository
-import com.taipeiTravelGuide.factory.SeeMoreAttractionsViewModelFactory
-import com.taipeiTravelGuide.factory.SeeMoreEventsViewModelFactory
+import com.taipeiTravelGuide.di.factory.SeeMoreAttractionsViewModelFactory
+import com.taipeiTravelGuide.di.factory.SeeMoreEventsViewModelFactory
 
 
 

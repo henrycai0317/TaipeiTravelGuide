@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.taipeiTravelGuide.StringUtils.checkString
-import com.taipeiTravelGuide.ViewUtils.setViewGone
-import com.taipeiTravelGuide.ViewUtils.setViewVisible
+import com.taipeiTravelGuide.utils.StringUtils.checkString
+import com.taipeiTravelGuide.utils.ViewUtils.setViewGone
+import com.taipeiTravelGuide.utils.ViewUtils.setViewVisible
 import com.taipeiTravelGuide.connect.response.AttractionsResponse
 import com.taipeiTravelGuide.connect.response.EventsResponse
 import com.taipeiTravelGuide.databinding.ItemHomePageHotNewsBinding

@@ -10,11 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import com.taipeiTravelGuide.Injection
+import com.taipeiTravelGuide.di.Injection
 import com.taipeiTravelGuide.R
-import com.taipeiTravelGuide.RecyclerViewLayoutManagerUtils.setLinearLayoutManager
-import com.taipeiTravelGuide.StringUtils.checkString
-import com.taipeiTravelGuide.ViewUtils.setViewVisibleOrGone
+import com.taipeiTravelGuide.utils.RecyclerViewLayoutManagerUtils.setLinearLayoutManager
+import com.taipeiTravelGuide.utils.StringUtils.checkString
+import com.taipeiTravelGuide.utils.ViewUtils.setViewVisibleOrGone
 import com.taipeiTravelGuide.databinding.FragmentSeeMoreTravelSpotBinding
 import com.taipeiTravelGuide.model.Attractions
 import com.taipeiTravelGuide.view.dialog.ProcessDialog

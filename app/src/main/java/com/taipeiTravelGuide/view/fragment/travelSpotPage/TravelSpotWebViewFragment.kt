@@ -12,8 +12,8 @@ import android.webkit.WebViewClient
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.taipeiTravelGuide.StringUtils.checkString
-import com.taipeiTravelGuide.StringUtils.secureUrl
+import com.taipeiTravelGuide.utils.StringUtils.checkString
+import com.taipeiTravelGuide.utils.StringUtils.secureUrl
 import com.taipeiTravelGuide.databinding.FragmentWebViewTravelSpotBinding
 import com.taipeiTravelGuide.view.dialog.ProcessDialog
 

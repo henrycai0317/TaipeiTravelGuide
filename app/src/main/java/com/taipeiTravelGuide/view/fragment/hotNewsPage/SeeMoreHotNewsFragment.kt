@@ -8,22 +8,18 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.taipeiTravelGuide.Injection
+import com.taipeiTravelGuide.di.Injection
 import com.taipeiTravelGuide.R
-import com.taipeiTravelGuide.RecyclerViewLayoutManagerUtils.setLinearLayoutManager
-import com.taipeiTravelGuide.StringUtils.checkString
-import com.taipeiTravelGuide.ViewUtils.setViewVisibleOrGone
+import com.taipeiTravelGuide.utils.RecyclerViewLayoutManagerUtils.setLinearLayoutManager
+import com.taipeiTravelGuide.utils.StringUtils.checkString
+import com.taipeiTravelGuide.utils.ViewUtils.setViewVisibleOrGone
 import com.taipeiTravelGuide.databinding.FragmentSeeMoreHotNewsBinding
 import com.taipeiTravelGuide.view.dialog.ProcessDialog
 import com.taipeiTravelGuide.view.fragment.hotNewsPage.adapter.SeeMoreHotNewsAdapter
 import com.taipeiTravelGuide.view.fragment.common.SeeMoreLoadStateAdapter
 import com.taipeiTravelGuide.viewModel.SeeMoreEventViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

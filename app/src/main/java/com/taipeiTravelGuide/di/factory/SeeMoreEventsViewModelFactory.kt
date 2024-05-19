@@ -1,4 +1,4 @@
-package com.taipeiTravelGuide.factory
+package com.taipeiTravelGuide.di.factory
 
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
