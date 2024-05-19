@@ -8,7 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taipeiTravelGuide.Injection
@@ -70,8 +72,24 @@ class SeeMoreHotNewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        restoreRecyclerViewState()
         initViews()
         initListener()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val state = mBinding?.rvList?.layoutManager?.onSaveInstanceState()
+        if (state != null) {
+            mViewModel.saveRecyclerViewState(state)
+        }
+    }
+
+    private fun restoreRecyclerViewState() {
+        val state = mViewModel.getRecyclerViewState()
+        if (state != null) {
+            mBinding?.rvList?.layoutManager?.onRestoreInstanceState(state)
+        }
     }
 
     private fun initListener() {
@@ -143,11 +161,14 @@ class SeeMoreHotNewsFragment : Fragment() {
     }
 
     private fun isTimeToShowProgressDialog(pShow: Boolean) {
-        mBinding?.icSeeMoreShimmer?.root?.setViewVisibleOrGone(pShow)
-        if (pShow) {
-            showProgressDialog()
-        } else {
-            cancelProgressDialog()
+        val state = mViewModel.getRecyclerViewState()
+        if (state == null) {
+            mBinding?.icSeeMoreShimmer?.root?.setViewVisibleOrGone(pShow)
+            if (pShow) {
+                showProgressDialog()
+            } else {
+                cancelProgressDialog()
+            }
         }
     }
 
