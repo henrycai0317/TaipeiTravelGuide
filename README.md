@@ -59,8 +59,8 @@
   - **Paging 3** - Pagination loading for RecyclerView.
   - **ViewModel** - UI related data holder, lifecycle aware.
   - **LiveData** - Observable data holder that notify views when underlying data changes.
-  - **View Binding** - Simplifies UI component binding and code generation..
-  - **Navigation component** - Fragment routing handler. (Upcoming)
+  - **View Binding** - Simplifies UI component binding and code generation
+  - **Navigation component** - Fragment routing handler. 
 - **Flow** - Stream of value that returns from suspend function.
 - **Coroutine** - Concurrency design pattern for asynchronous programming.
 - **(Implementing) Jetpack Compose** - Declarative and simplified way for UI development.
@@ -97,6 +97,7 @@ com.taipeiTravelGuide              # Root Package
 │   │   ├── homePage               # Home Fragment View
 │   │   ├── hotNewsPage            # Hot News Fragment View
 │   │   ├── travelSpotPage         # Travel Spot Fragment View
+│   │   
 │   ├── TaipeiTravelApplication    # Application
 │   
 └── viewModel                      # ViewModel used by all pages, which holds UI-related data and is lifecycle-aware.
